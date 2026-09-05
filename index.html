@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nikita Skrebnyov — Architect</title>
-    <meta name="description" content="Architectural portfolio of Nikita Skrebnyov, Istanbul.">
+    <title>Nikita Skrebnev — Architect</title>
+    <meta name="description" content="Architectural portfolio of Nikita Skrebnev, Istanbul.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
             <span class="mark">NS</span>
         </div>
         <div class="strip-name">
-            <span>NIKITA&nbsp;SKREBNYOV</span>
+            <span>NIKITA&nbsp;SKREBNEV</span>
         </div>
         <nav class="strip-nav">
             <a href="#work">Work</a>
@@ -50,7 +50,10 @@
 
             <div class="grid">
 
-                <article class="card">
+                <article class="card" tabindex="0"
+                         data-title="Terraviva"
+                         data-tag="Competition entry — 2024"
+                         data-desc="A competition proposal exploring adaptive reuse of industrial waterfront structures. Placeholder description — replace with the real project text.">
                     <div class="thumb" style="background:#e7e5e0;"></div>
                     <div class="card-meta">
                         <span class="card-title">Terraviva</span>
@@ -58,7 +61,10 @@
                     </div>
                 </article>
 
-                <article class="card">
+                <article class="card" tabindex="0"
+                         data-title="Private Villa"
+                         data-tag="Arch · Str · MEP · Site — In progress"
+                         data-desc="A fully coordinated four-discipline villa project used to establish office-wide BIM standards. Placeholder description — replace with the real project text.">
                     <div class="thumb" style="background:#e2e0da;"></div>
                     <div class="card-meta">
                         <span class="card-title">Private Villa</span>
@@ -66,7 +72,10 @@
                     </div>
                 </article>
 
-                <article class="card">
+                <article class="card" tabindex="0"
+                         data-title="Student Project 01"
+                         data-tag="Academic — 2022"
+                         data-desc="Placeholder description — replace with the real project text.">
                     <div class="thumb" style="background:#e9e7e2;"></div>
                     <div class="card-meta">
                         <span class="card-title">Student Project 01</span>
@@ -74,7 +83,10 @@
                     </div>
                 </article>
 
-                <article class="card">
+                <article class="card" tabindex="0"
+                         data-title="Student Project 02"
+                         data-tag="Academic — 2022"
+                         data-desc="Placeholder description — replace with the real project text.">
                     <div class="thumb" style="background:#e4e2dc;"></div>
                     <div class="card-meta">
                         <span class="card-title">Student Project 02</span>
@@ -100,13 +112,6 @@
                 Russian and Turkish construction standards. I speak Turkish, Russian, English,
                 and Turkmen, and work with clients across all four.
             </p>
-
-            <dialog id="project-modal">
-                <button class="modal-close" aria-label="Close">×</button>
-                <h2>Terraviva</h2>
-                <p>Описание проекта...</p>
-            </dialog>
-
         </section>
 
         <hr class="rule">
@@ -140,6 +145,15 @@
     </main>
 </div>
 
-<script src="main.js"></script>
+<!-- shared project modal -->
+<dialog id="project-modal">
+    <button class="modal-close" id="modal-close" aria-label="Close">×</button>
+    <div class="sheet-no" id="modal-tag"></div>
+    <h2 id="modal-title"></h2>
+    <div class="thumb modal-thumb" id="modal-thumb"></div>
+    <p id="modal-desc"></p>
+</dialog>
+
+<script src="script.js"></script>
 </body>
 </html>
