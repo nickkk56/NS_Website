@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikita Skrebnyov — Architect</title>
+    <meta name="description" content="Architectural portfolio of Nikita Skrebnyov, Istanbul.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="sheet">
+
+    <!-- LEFT TITLE STRIP -->
+    <header class="strip">
+        <div class="strip-top">
+            <span class="mark">NS</span>
+        </div>
+        <div class="strip-name">
+            <span>NIKITA&nbsp;SKREBNYOV</span>
+        </div>
+        <nav class="strip-nav">
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- HERO / A-00 -->
+        <section class="hero" id="top">
+            <div class="sheet-no">A&#8211;00</div>
+            <h1>Architecture, drawn<br>and built with intent.</h1>
+            <p class="hero-sub">Based in Istanbul. Working across residential and structural projects, with a focus on detailed, construction-ready documentation.</p>
+        </section>
+
+        <hr class="rule">
+
+        <!-- WORK / A-01 -->
+        <section class="work" id="work">
+            <div class="section-head">
+                <div class="sheet-no">A&#8211;01</div>
+                <h2>Selected work</h2>
+            </div>
+
+            <div class="grid">
+
+                <article class="card">
+                    <div class="thumb" style="background:#e7e5e0;"></div>
+                    <div class="card-meta">
+                        <span class="card-title">Terraviva</span>
+                        <span class="card-tag">Competition entry — 2024</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="thumb" style="background:#e2e0da;"></div>
+                    <div class="card-meta">
+                        <span class="card-title">Private Villa</span>
+                        <span class="card-tag">Arch · Str · MEP · Site — In progress</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="thumb" style="background:#e9e7e2;"></div>
+                    <div class="card-meta">
+                        <span class="card-title">Student Project 01</span>
+                        <span class="card-tag">Academic — 2022</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="thumb" style="background:#e4e2dc;"></div>
+                    <div class="card-meta">
+                        <span class="card-title">Student Project 02</span>
+                        <span class="card-tag">Academic — 2022</span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <hr class="rule">
+
+        <!-- ABOUT / A-02 -->
+        <section class="about" id="about">
+            <div class="section-head">
+                <div class="sheet-no">A&#8211;02</div>
+                <h2>About</h2>
+            </div>
+            <p class="about-text">
+                I'm an architect based in Istanbul, currently working on structural and facade
+                coordination for residential and commercial projects. My background spans
+                architectural design, BIM documentation, and steel connection detailing across
+                Russian and Turkish construction standards. I speak Turkish, Russian, English,
+                and Turkmen, and work with clients across all four.
+            </p>
+
+            <dialog id="project-modal">
+                <button class="modal-close" aria-label="Close">×</button>
+                <h2>Terraviva</h2>
+                <p>Описание проекта...</p>
+            </dialog>
+
+        </section>
+
+        <hr class="rule">
+
+        <!-- CONTACT / TITLE BLOCK -->
+        <section class="contact" id="contact">
+            <div class="section-head">
+                <div class="sheet-no">A&#8211;03</div>
+                <h2>Contact</h2>
+            </div>
+            <div class="title-block">
+                <div class="tb-cell">
+                    <span class="tb-label">Email</span>
+                    <a class="tb-value" href="mailto:hello@nikitaskrebnyov.com">hello@nikitaskrebnyov.com</a>
+                </div>
+                <div class="tb-cell">
+                    <span class="tb-label">Location</span>
+                    <span class="tb-value">Istanbul, TR</span>
+                </div>
+                <div class="tb-cell">
+                    <span class="tb-label">Instagram</span>
+                    <a class="tb-value" href="#">@handle</a>
+                </div>
+                <div class="tb-cell">
+                    <span class="tb-label">Drawn</span>
+                    <span class="tb-value" id="year">2026</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
