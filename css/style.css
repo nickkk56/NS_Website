@@ -1,0 +1,127 @@
+/* 1. VARIABLES (Цвета из гайдлайна + Новые шрифты) */
+:root {
+    /* Colors */
+    --bg-color: #fcfcfc;
+    --card-bg: #ffffff;
+    --text-main: #1a1a1a;
+    --text-secondary: #666666;
+    --accent-color: #E8792F;      /* Твой оранжевый из гайдлайна */
+    --accent-hover: #C85F1E;
+    --border-color: #e0e0e0;
+
+    /* Typography */
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+
+    /* Spacing */
+    --container-width: 1100px;
+    --section-padding: 80px 0;
+}
+
+/* --- CUSTOM CURSOR --- */
+
+/* Основная точка */
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none; /* Чтобы курсор не мешал кликать по кнопкам */
+    transform: translate(-50%, -50%);
+}
+
+/* Большой ореол (преследователь) */
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--accent-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    z-index: 9998;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    /* Плавность движения ореола */
+    transition: transform 0.15s ease-out;
+}
+
+/* Эффект при наведении на ссылки/кнопки */
+/* Когда мы добавим класс .cursor-hover через JS, ореол будет увеличиваться */
+.cursor-hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    background-color: rgba(232, 121, 47, 0.1); /* Легкая заливка акцентным цветом */
+    border-width: 1px;
+}
+
+/* 2.BASE*/
+
+/*
+   Символ '*' выбирает ВООБЩЕ ВСЕ элементы на странице.
+   Это нужно, чтобы убрать странные отступы, которые браузеры добавляют по умолчанию.
+*/
+* {
+    margin: 0;           /* Убираем внешние отступы у всех элементов */
+    padding: 0;          /* Убираем внутренние отступы у всех элементов */
+    box-sizing: border-box; /* Критически важно: заставляет padding не увеличивать ширину элемента */
+}
+
+/*
+   Настройки для всего документа (body).
+   Здесь мы применяем твои переменные.
+*/
+body {
+    font-family: var(--font-body); /* Используем шрифт Montserrat из переменных */
+    background-color: var(--bg-color); /* Используем фон из переменных */
+    color: var(--text-main);        /* Используем основной цвет текста */
+    line-height: 1.6;               /* Межстрочный интервал для удобства чтения */
+    -webkit-font-smoothing: antialiased; /* Делает шрифты более мягкими и четкими на экранах Mac/Chrome */
+    cursor: none;
+}
+
+/*
+   Настройки для ссылок (a).
+   По умолчанию ссылки подчеркнуты и синие. Мы это уберем.
+*/
+a {
+    text-decoration: none; /* Убираем стандартное подчеркивание */
+    color: inherit;        /* Ссылка будет принимать цвет текста родителя, а не становиться синей */
+    transition: color 0.2s ease; /* Чтобы при наведении цвет менялся плавно, а не мгновенно */
+    cursor: none;
+}
+
+
+/* --- LAYOUT SYSTEM --- */
+
+/* 1. Контейнер для контента (ограничивает ширину и центрирует) */
+.container {
+    max-width: 1400px; /* Можешь менять под себя */
+    margin: 0 auto;
+    padding: 0 48px;
+}
+
+/* 2. Класс для секций на всю ширину экрана (например, для фонов) */
+.full-width {
+    width: 100%;
+}
+
+/* 3. Класс для секций на всю высоту экрана (vh100) */
+.vh-100 {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Центрирует контент вертикально */
+    align-items: center;     /* Центрирует контент горизонтально */
+}
+
+/* 4. Если нужно, чтобы текст в vh-100 не прижимался к краям,
+   используй внутри .vh-100 стандартный .container */
+/*
+   Универсальный контейнер.
+   Мы будем оборачивать контент в <div class="container">,
+   чтобы он не растягивался на весь экран, а стоял ровно по центру.
+*/

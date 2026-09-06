@@ -1,150 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nikita Skrebnev — Architect</title>
-    <meta name="description" content="Architectural portfolio of Nikita Skrebnyov, Istanbul.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Nikita Skrebnyov | Architect & BIM Specialist</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<div class="sheet">
+<!-- Элементы кастомного курсора -->
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
+<!-- Элементы кастомного курсора -->
 
-    <!-- LEFT TITLE STRIP -->
-    <header class="strip">
-        <div class="strip-top">
-            <span class="mark">NS</span>
+<!-- Навигационная Панель -->
+<nav>
+    <div>
+        <a href="index.html">NS</a>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="work.html">Work</a>
+            <a href="NStoolkit.html">NS.Toolkit</a>
         </div>
-        <div class="strip-name">
-            <span>NIKITA&nbsp;SKREBNYOV</span>
-        </div>
-        <nav class="strip-nav">
-            <a href="#work">Work</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-
-    <!-- MAIN CONTENT -->
-    <main>
-
-        <!-- HERO / A-00 -->
-        <section class="hero" id="top">
-            <div class="sheet-no">A&#8211;00</div>
-            <h1>Architect. Bim Specialist.<br>Tool Developer.</h1>
-            <p class="hero-sub">I design buildings, develop BIM workflows, and build tools for architects. </p>
-        </section>
-
-        <hr class="rule">
-
-        <!-- WORK / A-01 -->
-        <section class="work" id="work">
-            <div class="section-head">
-                <div class="sheet-no">A&#8211;01</div>
-                <h2>Selected work</h2>
-            </div>
-
-            <div class="grid">
-
-                <article class="card" tabindex="0" data-project="terraviva">
-                    <div class="thumb"><img src="images/terraviva/cover.jpg" alt="Terraviva competition entry"></div>
-                    <div class="card-meta">
-                        <span class="card-title">Terraviva</span>
-                        <span class="card-tag">Competition entry — 2024</span>
-                    </div>
-                </article>
-
-                <article class="card" tabindex="0" data-project="villa">
-                    <div class="thumb"><img src="images/villa/cover.jpg" alt="Private villa project"></div>
-                    <div class="card-meta">
-                        <span class="card-title">Private Villa</span>
-                        <span class="card-tag">Arch · Str · MEP · Site — In progress</span>
-                    </div>
-                </article>
-
-                <article class="card" tabindex="0" data-project="student01">
-                    <div class="thumb"><img src="images/student01/cover.jpg" alt="Student project 01"></div>
-                    <div class="card-meta">
-                        <span class="card-title">Student Project 01</span>
-                        <span class="card-tag">Academic — 2022</span>
-                    </div>
-                </article>
-
-                <article class="card" tabindex="0" data-project="student02">
-                    <div class="thumb"><img src="images/student02/cover.jpg" alt="Student project 02"></div>
-                    <div class="card-meta">
-                        <span class="card-title">Student Project 02</span>
-                        <span class="card-tag">Academic — 2022</span>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-        <hr class="rule">
-
-        <!-- ABOUT / A-02 -->
-        <section class="about" id="about">
-            <div class="section-head">
-                <div class="sheet-no">A&#8211;02</div>
-                <h2>About</h2>
-            </div>
-            <p class="about-text">
-                I'm an architect based in Istanbul, currently working on structural and facade
-                coordination for residential and commercial projects. My background spans
-                architectural design, BIM documentation, and steel connection detailing across
-                Russian and Turkish construction standards. I speak Turkish, Russian, English,
-                and Turkmen, and work with clients across all four.
-            </p>
-        </section>
-
-        <hr class="rule">
-
-        <!-- CONTACT / TITLE BLOCK -->
-        <section class="contact" id="contact">
-            <div class="section-head">
-                <div class="sheet-no">A&#8211;03</div>
-                <h2>Contact</h2>
-            </div>
-            <div class="title-block">
-                <div class="tb-cell">
-                    <span class="tb-label">Email</span>
-                    <a class="tb-value" href="mailto:hello@nikitaskrebnyov.com">hello@nikitaskrebnyov.com</a>
-                </div>
-                <div class="tb-cell">
-                    <span class="tb-label">Location</span>
-                    <span class="tb-value">Istanbul, TR</span>
-                </div>
-                <div class="tb-cell">
-                    <span class="tb-label">Instagram</span>
-                    <a class="tb-value" href="#">@handle</a>
-                </div>
-                <div class="tb-cell">
-                    <span class="tb-label">Drawn</span>
-                    <span class="tb-value" id="year">2026</span>
-                </div>
-            </div>
-        </section>
-
-    </main>
-</div>
-
-<!-- shared project modal -->
-<dialog id="project-modal">
-    <button class="modal-close" id="modal-close" aria-label="Close">×</button>
-    <div class="modal-hero" id="modal-hero"></div>
-    <div class="modal-body">
-        <div class="sheet-no" id="modal-tag"></div>
-        <h2 id="modal-title"></h2>
-        <div class="modal-desc" id="modal-desc"></div>
     </div>
-    <div class="modal-gallery" id="modal-gallery"></div>
-</dialog>
+</nav>
+<!-- Навигационная Панель -->
 
-<script src="main.js"></script>
+<!-- Hero Section -->
+<main>
+    <section class="vh-100">
+        <p>Architect. BIM Specialist. Tool Developer.</p>
+        <h1>Nikita Skrebnyov</h1>
+        <p>I design buildings, develop BIM workflows, and build tools for architects.</p>
+    </section>
+    <!-- Hero Section -->
+
+    <!-- Skills Section -->
+    <section >
+        <h2>Skills</h2>
+        <div>
+            <article>
+                <h3>Architecture & Design</h3>
+                <ul>
+                    <li>Architectural Design</li>
+                    <li>Concept Development</li>
+                    <li>Documentation</li>
+                    <li>Competition Projects</li>
+                    <li>Technical Knowledge</li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>Computation & Automation</h3>
+                <ul>
+                    <li>Dynamo</li>
+                    <li>Rhino + Grasshopper</li>
+                    <li>C# & Revit API</li>
+                    <li>pyRevit</li>
+                    <li>Visual Studio</li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>BIM</h3>
+                <ul>
+                    <li>Revit</li>
+                    <li>Archicad</li>
+                    <li>Server Management</li>
+                    <li>BIM Standards</li>
+                    <li>Developing Templates & Families</li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>Visual Representation</h3>
+                <ul>
+                    <li>3ds Max</li>
+                    <li>Blender</li>
+                    <li>V-Ray</li>
+                    <li>Graphic Design</li>
+                    <li>Simplifying Ideas</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        <div>
+            <div>
+                <p>2021 — 2025</p>
+                <h3>Architecture Degree</h3>
+                <p>Bahçeşehir University | Faculty of Architecture And Design</p>
+                <p>GPA 3.39 / 4.00</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Let's work together.</h2>
+        <p>Have a project, collaboration, or idea in mind?</p>
+        <div>
+            <a href="mailto:your-email@example.com">Email Me</a>
+            <a href="#">LinkedIn</a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div>
+        <a href="index.html">NS</a>
+        <p>Architect & BIM Specialist. Building digital workflows for the modern era.</p>
+    </div>
+    <div>
+        <h4>Navigation</h4>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="NStoolkit.html">NS.Toolkit</a></li>
+        </ul>
+    </div>
+    <div>
+        <h4>Contact</h4>
+        <ul>
+            <li><a href="#">WhatsApp</a></li>
+            <li><a href="mailto:your-email@example.com">Email</a></li>
+            <li><a href="#">LinkedIn</a></li>
+        </ul>
+    </div>
+    <div>
+        <p>&copy; 2025 Nikita Skrebnyov. Built with precision.</p>
+    </div>
+</footer>
+<!-- Подключаем скрипт в самом конце -->
+<script src="js/main.js"></script>
 </body>
 </html>
