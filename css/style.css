@@ -1,127 +1,405 @@
-/* 1. VARIABLES (Цвета из гайдлайна + Новые шрифты) */
+/* =========================================
+   1. DESIGN SYSTEM (VARIABLES)
+   ========================================= */
 :root {
     /* Colors */
-    --bg-color: #fcfcfc;
-    --card-bg: #ffffff;
-    --text-main: #1a1a1a;
-    --text-secondary: #666666;
-    --accent-color: #E8792F;      /* Твой оранжевый из гайдлайна */
-    --accent-hover: #C85F1E;
-    --border-color: #e0e0e0;
+    --bg-color: #0a0a0a;
+    --surface-color: #161616;
+    --text-main: #f5f5f5;
+    --text-secondary: #a0a0a0;
+    --accent-color: #E8792F;
+    --accent-soft: rgba(232, 121, 47, 0.1);
 
     /* Typography */
-    --font-heading: 'Oswald', sans-serif;
-    --font-body: 'Montserrat', sans-serif;
+    --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
-    /* Spacing */
-    --container-width: 1100px;
+    /* Spacing & Layout */
+    --container-width: 1200px;
     --section-padding: 80px 0;
+    --gap-standard: 30px;
+    --border-radius: 8px;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* --- CUSTOM CURSOR --- */
+/* =========================================
+   2. RESET & BASE STYLES
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none; /* Используем кастомный курсор [3] */
+}
 
-/* Основная точка */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-fast);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* =========================================
+   3. TYPOGRAPHY
+   ========================================= */
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase; /* Архитектурный стиль */
+    letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 20px; }
+h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 40px; }
+h3 { font-size: 1.5rem; margin-bottom: 15px; }
+
+p {
+    font-weight: 300;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.text-subtitle {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: 15px;
+}
+
+.text-accent {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* =========================================
+   4. LAYOUT COMPONENTS
+   ========================================= */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section {
+    padding: var(--section-padding);
+}
+
+.vh-100 {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.flex-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Smart Grid */
+.grid {
+    display: grid;
+    gap: var(--gap-standard);
+}
+
+.grid-auto {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.top-margin{
+    margin-top:0;
+}
+
+/* =========================================
+   5. UI COMPONENTS (Cards, Buttons, Modals)
+   ========================================= */
+
+/* Card Base */
+.card {
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--accent-color);
+    color: #fff;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transition: opacity var(--transition-smooth), transform var(--transition-smooth);
+}
+
+.btn:hover {
+    opacity: 0.6;
+    transform: scale(1.1); /* Легкое увеличение на 5% */
+    transition: opacity var(--transition-fast), transform var(--transition-smooth);
+}
+
+/* Placeholder for Modals (will build in next step) */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: none; /* По умолчанию скрыт */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =========================================
+   6. CUSTOM CURSOR (From your current code [2, 3])
+   ========================================= */
+/* Скрываем точку совсем, чтобы не перегружать интерфейс */
 .cursor-dot {
-    width: 8px;
-    height: 8px;
-    background-color: var(--accent-color);
+    display: none;
+}
+
+/* Тонкое, изящное кольцо */
+.cursor-outline {
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--text-main); /* Тонкая линия основного цвета текста */
     position: fixed;
     top: 0;
     left: 0;
     border-radius: 50%;
     z-index: 9999;
-    pointer-events: none; /* Чтобы курсор не мешал кликать по кнопкам */
-    transform: translate(-50%, -50%);
-}
-
-/* Большой ореол (преследователь) */
-.cursor-outline {
-    width: 40px;
-    height: 40px;
-    border: 2px solid var(--accent-color);
-    position: fixed;
-    top: 0;
-    left: 0;
-    border-radius: 50%;
-    z-index: 9998;
     pointer-events: none;
     transform: translate(-50%, -50%);
-    /* Плавность движения ореола */
-    transition: transform 0.15s ease-out;
+    /* Плавное масштабирование и смена цвета */
+    transition: transform var(--transition-fast);
 }
 
-/* Эффект при наведении на ссылки/кнопки */
-/* Когда мы добавим класс .cursor-hover через JS, ореол будет увеличиваться */
+/* Эффект при наведении: кольцо просто становится чуть больше и меняет цвет на акцентный */
 .cursor-hover {
-    transform: translate(-50%, -50%) scale(1.5);
-    background-color: rgba(232, 121, 47, 0.1); /* Легкая заливка акцентным цветом */
-    border-width: 1px;
+    transform: translate(-50%, -50%) scale(1.6);
+    border-color: var(--accent-color);
 }
 
-/* 2.BASE*/
-
-/*
-   Символ '*' выбирает ВООБЩЕ ВСЕ элементы на странице.
-   Это нужно, чтобы убрать странные отступы, которые браузеры добавляют по умолчанию.
-*/
-* {
-    margin: 0;           /* Убираем внешние отступы у всех элементов */
-    padding: 0;          /* Убираем внутренние отступы у всех элементов */
-    box-sizing: border-box; /* Критически важно: заставляет padding не увеличивать ширину элемента */
-}
-
-/*
-   Настройки для всего документа (body).
-   Здесь мы применяем твои переменные.
-*/
-body {
-    font-family: var(--font-body); /* Используем шрифт Montserrat из переменных */
-    background-color: var(--bg-color); /* Используем фон из переменных */
-    color: var(--text-main);        /* Используем основной цвет текста */
-    line-height: 1.6;               /* Межстрочный интервал для удобства чтения */
-    -webkit-font-smoothing: antialiased; /* Делает шрифты более мягкими и четкими на экранах Mac/Chrome */
-    cursor: none;
-}
-
-/*
-   Настройки для ссылок (a).
-   По умолчанию ссылки подчеркнуты и синие. Мы это уберем.
-*/
-a {
-    text-decoration: none; /* Убираем стандартное подчеркивание */
-    color: inherit;        /* Ссылка будет принимать цвет текста родителя, а не становиться синей */
-    transition: color 0.2s ease; /* Чтобы при наведении цвет менялся плавно, а не мгновенно */
-    cursor: none;
-}
-
-
-/* --- LAYOUT SYSTEM --- */
-
-/* 1. Контейнер для контента (ограничивает ширину и центрирует) */
-.container {
-    max-width: 1400px; /* Можешь менять под себя */
-    margin: 0 auto;
-    padding: 0 48px;
-}
-
-/* 2. Класс для секций на всю ширину экрана (например, для фонов) */
-.full-width {
+/* Навигация: Glassmorphism */
+.main-header {
+    position: fixed; /* Всегда на виду при скролле */
+    top: 0;
+    left: 0;
     width: 100%;
+    z-index: 1000; /* Поверх всего */
+
+    /* Эффект стекла */
+    background: rgba(10, 10, 10, 0.7); /* Полупрозрачный черный */
+    backdrop-filter: blur(12px); /* Размытие фона под шапкой */
+    -webkit-backdrop-filter: blur(12px);
+
+    /* Тонкая граница снизу для разделения */
+    border-bottom: 1px solid var(--surface-color);
+    transition: all var(--transition-smooth);
 }
 
-/* 3. Класс для секций на всю высоту экрана (vh100) */
-.vh-100 {
-    min-height: 100vh;
+.main-header nav {
+    height: 80px; /* Фиксированная высота для порядка */
     display: flex;
-    flex-direction: column;
-    justify-content: center; /* Центрирует контент вертикально */
-    align-items: center;     /* Центрирует контент горизонтально */
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* 4. Если нужно, чтобы текст в vh-100 не прижимался к краям,
-   используй внутри .vh-100 стандартный .container */
-/*
-   Универсальный контейнер.
-   Мы будем оборачивать контент в <div class="container">,
-   чтобы он не растягивался на весь экран, а стоял ровно по центру.
-*/
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--text-secondary);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-links a {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-secondary);
+    font-weight: 400;
+    transition: color var(--transition-fast);
+}
+
+/* Состояние при наведении */
+.nav-links a:hover {
+    color: var(--accent-color);
+
+}
+
+/* Состояние активной страницы */
+.nav-links a.active {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+/* =========================================
+   7. RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 60px 0;
+    }
+
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+
+    .grid-auto {
+        grid-template-columns: 1fr;
+    }
+    .nav-links {
+        gap: 20px;
+    }
+    .nav-links a {
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+    }
+    .footer {
+        min-height: 100dvh;
+        padding: 0;
+    }
+    .top-margin{
+        margin-top:200px;
+    }
+}
+/* Скрываем кастомный курсор на устройствах с сенсорным экраном (touchscreens) */
+@media (pointer: coarse) {
+    .cursor-outline,
+    .cursor-dot {
+        display: none !important;
+    }
+}
+
+/* Visual CTA Section */
+.visual-cta {
+    padding: 120px 0; /* Твой стандартный отступ */
+}
+
+.cta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.cta-card {
+    position: relative;
+    height: 400px; /* Высота карточки */
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-end; /* Контент прижат к низу */
+    border-radius: 4px; /* Легкое скругление для премиальности */
+}
+
+.cta-card-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform var(--transition-smooth), filter var(--transition-smooth); /* Плавный "архитектурный" зум */
+    z-index: 1;
+    filter: grayscale(100%)
+}
+
+.cta-card:hover .cta-card-bg {
+    transform: scale(1.1); /* Эффект приближения */
+    filter: grayscale(0%);
+}
+
+.cta-card-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(10,10,10,0.9) 10%, transparent 70%);
+    z-index: 2;
+}
+
+.cta-card-content {
+    position: relative;
+    z-index: 3;
+    padding: 40px;
+}
+
+.cta-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-color); /* Твой оранжевый */
+    display: block;
+    margin-bottom: 10px;
+}
+
+.cta-card h3 {
+    font-size: 2rem;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.cta-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.cta-link {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-link .arrow {
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.cta-card:hover .cta-link .arrow {
+    transform: translateX(5px); /* Стрелочка чуть едет вправо при наведении */
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+    .visual-cta { padding: 60px 0; }
+    .cta-card { height: 350px; }
+}

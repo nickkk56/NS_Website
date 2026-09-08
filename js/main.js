@@ -1,15 +1,18 @@
-const dot = document.querySelector('.cursor-dot');
+
+// ... Cursor Effects ...
+// Проверяем, есть ли у пользователя точный указатель (мышь или стилус)
+const isMouseDevice = window.matchMedia('(pointer: fine)').matches;
+
+if (isMouseDevice) {
+    // Весь твой текущий код (const outline = ..., window.addEventListener...)
+    // должен находиться ВНУТРИ этого блока if
 const outline = document.querySelector('.cursor-outline');
 
 window.addEventListener('mousemove', (e) => {
     const posX = e.clientX;
     const posY = e.clientY;
 
-    // Мгновенно перемещаем точку
-    dot.style.left = `${posX}px`;
-    dot.style.top = `${posY}px`;
-
-    // Ореол будет двигаться чуть медленнее за счет CSS transition
+    // Двигаем только кольцо
     outline.style.left = `${posX}px`;
     outline.style.top = `${posY}px`;
 });
@@ -20,3 +23,6 @@ interactives.forEach(el => {
     el.addEventListener('mouseenter', () => outline.classList.add('cursor-hover'));
     el.addEventListener('mouseleave', () => outline.classList.remove('cursor-hover'));
 });
+
+}
+// ... Cursor Effects ...

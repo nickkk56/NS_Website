@@ -4,135 +4,168 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nikita Skrebnyov | Architect & BIM Specialist</title>
+
+    <!-- Подключаем шрифт Inter из Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Подключаем наш CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- Элементы кастомного курсора -->
+<!-- Кастомный курсор (из main.js [2]) -->
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
-<!-- Элементы кастомного курсора -->
 
-<!-- Навигационная Панель -->
-<nav>
-    <div>
-        <a href="index.html">NS</a>
-        <div>
-            <a href="index.html">Home</a>
-            <a href="work.html">Work</a>
-            <a href="NStoolkit.html">NS.Toolkit</a>
-        </div>
-    </div>
-</nav>
-<!-- Навигационная Панель -->
+<!-- HEADER: Навигация -->
+<header class="main-header">
+    <nav class="container">
+        <div class="logo">NS</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="NStoolkit.html">NS.Toolkit</a></li>
+        </ul>
+    </nav>
+</header>
 
-<!-- Hero Section -->
 <main>
-    <section class="vh-100">
-        <p>Architect. BIM Specialist. Tool Developer.</p>
-        <h1>Nikita Skrebnyov</h1>
-        <p>I design buildings, develop BIM workflows, and build tools for architects.</p>
-    </section>
     <!-- Hero Section -->
+    <section class=" vh-100 flex-center">
+        <div class="container">
+            <h1 style="max-width: 50ch">Architect. BIM Specialist. Tool Developer.</h1>
 
-    <!-- Skills Section -->
-    <section >
-        <h2>Skills</h2>
-        <div>
-            <article>
-                <h3>Architecture & Design</h3>
-                <ul>
-                    <li>Architectural Design</li>
-                    <li>Concept Development</li>
-                    <li>Documentation</li>
-                    <li>Competition Projects</li>
-                    <li>Technical Knowledge</li>
-                </ul>
-            </article>
+            <!-- 1. Добавляем text-align: center; -->
+            <p style="margin-bottom: 40px; text-align: center;">
+                I design buildings, develop BIM workflows, and build tools for architects.
+                Bridging the gap between architecture and technology.
+            </p>
 
-            <article>
-                <h3>Computation & Automation</h3>
-                <ul>
-                    <li>Dynamo</li>
-                    <li>Rhino + Grasshopper</li>
-                    <li>C# & Revit API</li>
-                    <li>pyRevit</li>
-                    <li>Visual Studio</li>
-                </ul>
-            </article>
-
-            <article>
-                <h3>BIM</h3>
-                <ul>
-                    <li>Revit</li>
-                    <li>Archicad</li>
-                    <li>Server Management</li>
-                    <li>BIM Standards</li>
-                    <li>Developing Templates & Families</li>
-                </ul>
-            </article>
-
-            <article>
-                <h3>Visual Representation</h3>
-                <ul>
-                    <li>3ds Max</li>
-                    <li>Blender</li>
-                    <li>V-Ray</li>
-                    <li>Graphic Design</li>
-                    <li>Simplifying Ideas</li>
-                </ul>
-            </article>
-        </div>
-    </section>
-
-    <section>
-        <h2>Education</h2>
-        <div>
-            <div>
-                <p>2021 — 2025</p>
-                <h3>Architecture Degree</h3>
-                <p>Bahçeşehir University | Faculty of Architecture And Design</p>
-                <p>GPA 3.39 / 4.00</p>
+            <!-- 2. Добавляем justify-content: center; -->
+            <div  style="display: flex; gap: 20px; justify-content: center;margin-top: auto">
+                <a href="work.html" class="btn">EXPLORE WORK</a>
+                <a href="NStoolkit.html" class="btn">NS.TOOLKIT</a>
             </div>
         </div>
     </section>
 
-    <section>
-        <h2>Let's work together.</h2>
-        <p>Have a project, collaboration, or idea in mind?</p>
-        <div>
-            <a href="mailto:your-email@example.com">Email Me</a>
-            <a href="#">LinkedIn</a>
+    <!-- Visual CTA Section -->
+    <section class="visual-cta">
+        <div class="container">
+            <div class="grid-auto">
+                <!-- Card 1: Work -->
+                <a href="work.html" class="cta-card">
+                    <div class="cta-card-bg" style="background-image: url('assets/1.webp');"></div>
+                    <div class="cta-card-overlay"></div>
+                    <div class="cta-card-content">
+                        <span class="cta-label">Portfolio</span>
+                        <h3>Selected Works</h3>
+                        <p>Architectural design & BIM documentation</p>
+                        <span class="cta-link">View Projects <span class="arrow">→</span></span>
+                    </div>
+                </a>
+
+                <!-- Card 2: Toolkit -->
+                <a href="NStoolkit.html" class="cta-card">
+                    <div class="cta-card-bg" style="background-image: url('assets/2.webp');"></div>
+                    <div class="cta-card-overlay"></div>
+                    <div class="cta-card-content">
+                        <span class="cta-label">Development</span>
+                        <h3>NS.Toolkit</h3>
+                        <p>Custom C# & Revit API solutions</p>
+                        <span class="cta-link">Explore Tools <span class="arrow">→</span></span>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
-</main>
 
-<footer>
-    <div>
-        <a href="index.html">NS</a>
-        <p>Architect & BIM Specialist. Building digital workflows for the modern era.</p>
-    </div>
-    <div>
-        <h4>Navigation</h4>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="work.html">Work</a></li>
-            <li><a href="NStoolkit.html">NS.Toolkit</a></li>
-        </ul>
-    </div>
-    <div>
-        <h4>Contact</h4>
-        <ul>
-            <li><a href="#">WhatsApp</a></li>
-            <li><a href="mailto:your-email@example.com">Email</a></li>
-            <li><a href="#">LinkedIn</a></li>
-        </ul>
-    </div>
-    <div>
-        <p>&copy; 2025 Nikita Skrebnyov. Built with precision.</p>
+    <!-- SKILLS SECTION: Твои компетенции [1] -->
+    <section class="section">
+        <div class="container">
+            <span class="text-subtitle">Expertise</span>
+            <h2>Core Skills</h2>
+
+            <div class="grid grid-auto">
+                <!-- Блок 1: Architecture -->
+                <div class="card" style="padding: 40px;">
+                    <h3>Architecture</h3>
+                    <p>Architectural Design<br>Concept Development<br>Documentation<br>Competition Projects</p>
+                </div>
+
+                <!-- Блок 2: Computation -->
+                <div class="card" style="padding: 40px;">
+                    <h3>Computation</h3>
+                    <p>Dynamo<br>Rhino + Grasshopper<br>C# & Revit API<br>pyRevit<br>Visual Studio</p>
+                </div>
+
+                <!-- Блок 3: BIM -->
+                <div class="card" style="padding: 40px;">
+                    <h3>BIM</h3>
+                    <p>Revit<br>Archicad<br>Server Management<br>BIM Standards<br>Templates & Families</p>
+                </div>
+
+                <!-- Блок 4: Visualization -->
+                <div class="card" style="padding: 40px;">
+                    <h3>Visualization</h3>
+                    <p>3ds Max<br>Blender<br>V-Ray<br>Graphic Design<br>Simplifying Ideas</p>
+                </div>
+            </div>
+        </div>
+
+    <!-- SKILLS SECTION: Твои компетенции [1] -->
+        <section class="section">
+        <div class="container">
+            <span class="text-subtitle">Education</span>
+            <h2>Higher Education</h2>
+
+            <div class="grid grid-auto">
+                <!-- Блок 1: University -->
+                <div class="card" style="padding: 40px;">
+                    <h3 style="max-width: 15ch">BsC. Architecture 2021-2025</h3>
+                    <p>Bahcesehir University / Faculty of Architecure and Design</p>
+                    <p class="text-subtitle">GPA3.39/4.00</p>
+                </div>
+            </div>
+        </div>
+        </section>
+    </section>
+    </main>
+
+<!-- FOOTER -->
+<!-- 1. Убираем flex-center с футера, делаем его вертикальным контейнером высотой 100vh -->
+
+<footer class="section footer" style="display: flex; flex-direction: column; min-height: 100vh;">
+
+    <div class="container" style="display: flex; flex-direction: column; flex-grow: 1;">
+
+        <!-- Часть 1: CTA и Ссылки (Группируем их вместе) -->
+        <!-- margin-top: auto здесь поднимет всю эту группу в центр, если в футере много места -->
+        <div class="flex-center" style="margin-top: auto; margin-bottom: 40px;">
+            <h2 style="margin-bottom: 20px;">Have a collaboration, or idea in mind?</h2>
+            <p style="margin-bottom: 40px;">I'm always open to new challenges and interesting projects.</p>
+            <a href="mailto:your-email@example.com" class="btn" style="margin-bottom: 40px;">Email Me</a>
+        </div>
+
+        <!-- Часть 2: Копирайт (Прижимаем к самому низу) -->
+        <!-- margin-top: auto — это магия, которая прижимает блок к нижнему краю -->
+        <div class="flex-center" style="margin-top: auto; padding-top: 30px; width: 100%;">
+            <div style="display: flex; gap: 40px; justify-content: center; width: 100%; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px">
+                <a href="#">LinkedIn</a>
+                <a href="https://wa.me/905441960605">WhatsApp</a>
+                <a href="tel:+905441960605">Mobile</a>
+            </div>
+
+            <div style="border-top: 1px solid var(--surface-color)">
+            <p style="font-size: 0.8rem; letter-spacing: 3px; opacity: 0.6;margin-top: 5px">© 2026 NIKITA SKREBNYOV</p>
+            </div>
+        </div>
+
     </div>
 </footer>
-<!-- Подключаем скрипт в самом конце -->
+<!-- Подключаем JS для курсора [2] -->
 <script src="js/main.js"></script>
 </body>
 </html>
