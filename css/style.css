@@ -2,13 +2,16 @@
    1. DESIGN SYSTEM (VARIABLES)
    ========================================= */
 :root {
-    /* Colors */
-    --bg-color: #0a0a0a;
-    --surface-color: #161616;
-    --text-main: #f5f5f5;
-    --text-secondary: #a0a0a0;
+    /* Colors — Apple-style light */
+    --bg-color: #f5f5f7;
+    --surface-color: #ffffff;
+    --text-main: #1d1d1f;
+    --text-secondary: #6e6e73;
     --accent-color: #E8792F;
-    --accent-soft: rgba(232, 121, 47, 0.1);
+    --accent-soft: rgba(232, 121, 47, 0.12);
+    --border-color: rgba(0, 0, 0, 0.08);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.10);
 
     /* Typography */
     --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -16,9 +19,9 @@
 
     /* Spacing & Layout */
     --container-width: 1200px;
-    --section-padding: 100px 0;
+    --section-padding: 120px 0;
     --gap-standard: 30px;
-    --border-radius: 8px;
+    --border-radius: 16px;
 
     /* Transitions */
     --transition-fast: 0.2s ease;
@@ -69,30 +72,31 @@ img {
    ========================================= */
 h1, h2, h3, h4 {
     font-family: var(--font-heading);
-    font-weight: 700;
-    line-height: 1.1;
-    text-transform: uppercase; /* Архитектурный стиль */
+    font-weight: 600;
+    line-height: 1.12;
     letter-spacing: -0.02em;
+    text-wrap: balance;
 }
 
-h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 20px; }
-h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 40px; }
+h1 { font-size: clamp(2.75rem, 8vw, 5rem); margin-bottom: 24px; }
+h2 { font-size: clamp(2rem, 5vw, 3.25rem); margin-bottom: 40px; }
 h3 { font-size: 1.5rem; margin-bottom: 15px; }
 
 p {
-    font-weight: 300;
+    font-weight: 400;
     color: var(--text-secondary);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     line-height: 1.7;
 }
 
 .text-subtitle {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
     color: var(--accent-color);
     display: block;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
+    font-weight: 600;
 }
 
 .text-accent {
@@ -148,14 +152,17 @@ p {
 /* Card Base */
 .card {
     background: var(--surface-color);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     overflow: hidden;
-    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+    box-shadow: var(--shadow);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transform: translateY(-6px);
+    border-color: rgba(0, 0, 0, 0.14);
+    box-shadow: var(--shadow-lg);
 }
 
 /* Button */
@@ -163,31 +170,32 @@ p {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 32px;
+    padding: 14px 30px;
     background: var(--accent-color);
     color: #fff;
-    border-radius: var(--border-radius);
+    border: none;
+    border-radius: 980px;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.9rem;
-    transition: opacity var(--transition-smooth), transform var(--transition-smooth);
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    transition: background var(--transition-fast), transform var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
 .btn:hover {
-    opacity: 0.6;
-    transform: scale(1.1); /* Легкое увеличение на 5% */
-    transition: opacity var(--transition-fast), transform var(--transition-smooth);
+    background: #d26a24;
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(232, 121, 47, 0.30);
 }
 
 /* Нажатое состояние во время задержки перехода (см. setupDelayedLinks в js/main.js) */
 .btn.is-pressed {
-    opacity: 1;
-    transform: scale(0.96);
+    background: var(--accent-color);
+    transform: scale(0.97);
+    box-shadow: none;
 }
 
 /* =========================================
-   6. CUSTOM CURSOR (From your current code [2, 3])
+   6. CUSTOM CURSOR
    ========================================= */
 /* Скрываем точку совсем, чтобы не перегружать интерфейс */
 .cursor-dot {
@@ -196,9 +204,9 @@ p {
 
 /* Тонкое, изящное кольцо */
 .cursor-outline {
-    width: 24px;
-    height: 24px;
-    border: 1px solid var(--text-main); /* Тонкая линия основного цвета текста */
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(0, 0, 0, 0.35);
     position: fixed;
     top: 0;
     left: 0;
@@ -206,14 +214,14 @@ p {
     z-index: 9999;
     pointer-events: none;
     transform: translate(-50%, -50%);
-    /* Плавное масштабирование и смена цвета */
-    transition: transform var(--transition-fast);
+    transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
 }
 
-/* Эффект при наведении: кольцо просто становится чуть больше и меняет цвет на акцентный */
+/* Эффект при наведении: кольцо становится чуть больше и меняет цвет на акцентный */
 .cursor-hover {
-    transform: translate(-50%, -50%) scale(1.6);
+    transform: translate(-50%, -50%) scale(1.5);
     border-color: var(--accent-color);
+    background: var(--accent-soft);
 }
 
 /* Навигация: Glassmorphism */
@@ -225,39 +233,38 @@ p {
     z-index: 900;
 
     /* Эффект стекла */
-    background: rgba(10, 10, 10, 0.7); /* Полупрозрачный черный */
-    backdrop-filter: blur(12px); /* Размытие фона под шапкой */
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(245, 245, 247, 0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
 
     /* Тонкая граница снизу для разделения */
-    border-bottom: 1px solid var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
     transition: all var(--transition-smooth);
 }
 
 .main-header nav {
-    height: 80px; /* Фиксированная высота для порядка */
+    height: 56px; /* Компактная высота в стиле Apple */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    color: var(--text-main);
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 40px;
+    gap: 36px;
 }
 
 .nav-links a {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
     color: var(--text-secondary);
     font-weight: 400;
     transition: color var(--transition-fast);
@@ -265,8 +272,7 @@ p {
 
 /* Состояние при наведении */
 .nav-links a:hover {
-    color: var(--accent-color);
-
+    color: var(--text-main);
 }
 
 /* Состояние активной страницы */
@@ -280,11 +286,11 @@ p {
    ========================================= */
 @media (max-width: 768px) {
     :root {
-        --section-padding: 60px 0;
+        --section-padding: 72px 0;
     }
 
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 2rem; }
+    h1 { font-size: 2.6rem; }
+    h2 { font-size: 2.1rem; }
 
     .grid-auto {
         grid-template-columns: 1fr;
@@ -293,11 +299,10 @@ p {
         grid-template-columns: repeat(1, 1fr);
     }
     .nav-links {
-        gap: 20px;
+        gap: 22px;
     }
     .nav-links a {
-        font-size: 0.75rem;
-        letter-spacing: 1px;
+        font-size: 0.85rem;
         min-height: 44px;
         display: flex;
         align-items: center;
@@ -328,13 +333,22 @@ p {
 
 .cta-card {
     position: relative;
-    height: 500px; /* Высота карточки */
+    height: 520px; /* Высота карточки */
     overflow: hidden;
     text-decoration: none;
     display: flex;
     align-items: flex-end; /* Контент прижат к низу */
-    border-radius: var(--border-radius); /* Легкое скругление для премиальности */
-    margin-bottom: 10px;
+    border-radius: var(--border-radius);
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.cta-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 0, 0, 0.14);
+    box-shadow: var(--shadow-lg);
 }
 
 .cta-card-bg {
@@ -342,20 +356,18 @@ p {
     top: 0; left: 0; width: 100%; height: 100%;
     background-size: cover;
     background-position: center;
-    transition: transform var(--transition-smooth), filter var(--transition-smooth); /* Плавный "архитектурный" зум */
+    transition: transform var(--transition-smooth); /* Плавный зум */
     z-index: 1;
-    filter: grayscale(100%)
 }
 
 .cta-card:hover .cta-card-bg {
-    transform: scale(1.1); /* Эффект приближения */
-    filter: grayscale(0%);
+    transform: scale(1.03); /* Деликатное приближение */
 }
 
 .cta-card-overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to top, rgba(10,10,10,0.9) 10%, transparent 70%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 5%, rgba(0, 0, 0, 0.15) 55%, transparent 85%);
     z-index: 2;
 }
 
@@ -366,32 +378,31 @@ p {
 }
 
 .cta-label {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--accent-color); /* Твой оранжевый */
+    letter-spacing: 1px;
+    color: var(--accent-color);
     display: block;
     margin-bottom: 10px;
 }
 
 .cta-card h3 {
     font-size: 2rem;
-    color: var(--text-main);
+    color: #fff;
     margin-bottom: 10px;
 }
 
 .cta-card p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
     margin-bottom: 20px;
 }
 
 .cta-link {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    color: var(--text-main);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    color: #fff;
+    letter-spacing: 0.02em;
 }
 
 .cta-link .arrow {
@@ -406,26 +417,27 @@ p {
 /* Mobile Fix */
 @media (max-width: 768px) {
     .visual-cta { padding: 60px 0; }
-    .cta-card { height: 300px; }
+    .cta-card { height: 380px; }
 
     /* Начальное состояние элементов (скрыты и чуть ниже) */
     .reveal {
         opacity: 0;
-        transform: translateY(40px) scale(0.95); /* Смещаем вниз и чуть уменьшаем */
-        transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); /* Плавная, "премиальная" анимация */
-        will-change: transform, opacity; /* Оптимизация для браузера */
+        transform: translateY(32px);
+        transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        will-change: transform, opacity;
     }
 
     /* Состояние, когда элемент "ожил" */
     .reveal.active {
         opacity: 1;
-        transform: translateY(0) scale(1); /* Возвращаем в нормальное положение */
+        transform: translateY(0);
     }
-    .cta-card h3{
-        color: var(--text-main);
+
+    .cta-card h3 {
+        color: #fff;
     }
-    .cta-card p{
-        color: var(--text-secondary);
+    .cta-card p {
+        color: rgba(255, 255, 255, 0.8);
     }
 }
 
@@ -434,16 +446,22 @@ p {
     position: relative;
     background: var(--surface-color);
     overflow: hidden;
-    transition: transform var(--transition-smooth);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
 }
 
 .work-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-6px);
+    border-color: rgba(0, 0, 0, 0.14);
+    box-shadow: var(--shadow-lg);
 }
 
 .card-img-wrapper {
     aspect-ratio: 16/10;
     overflow: hidden;
+    background: var(--bg-color);
 }
 
 .card-img-wrapper img {
@@ -454,24 +472,25 @@ p {
 }
 
 .work-card:hover .card-img-wrapper img {
-    transform: scale(1.05);
+    transform: scale(1.04);
 }
 
 .card-info {
-    padding: 20px;
+    padding: 22px;
 }
 
 .card-category {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    letter-spacing: 2px;
     color: var(--accent-color);
     display: block;
     margin-bottom: 8px;
+    font-weight: 600;
 }
 
 .card-info h3 {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     margin: 0;
     color: var(--text-main);
 }
@@ -480,13 +499,13 @@ p {
 .modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    display: none; /* Скрыто по умолчанию */
+    background: rgba(20, 20, 22, 0.55);
+    display: none;
     justify-content: center;
     align-items: center;
     z-index: 1000;
     padding: 20px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(14px);
 }
 
 .modal-overlay.active {
@@ -501,18 +520,35 @@ p {
     max-height: 90dvh;
     position: relative;
     overflow-y: auto;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
     display: flex;
     flex-direction: column;
 }
 
 .modal-close {
     position: absolute;
-    top: 20px; right: 20px;
-    background: none; border: none;
-    color: var(--accent-color);
-    font-size: 2rem;
+    top: 16px; right: 16px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    font-size: 1.75rem;
+    line-height: 1;
     z-index: 10;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+}
+
+.modal-close:hover {
+    background: var(--accent-color);
+    color: #fff;
+    border-color: var(--accent-color);
 }
 
 .modal-body {
@@ -526,6 +562,7 @@ p {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .modal-text-container {
@@ -535,7 +572,7 @@ p {
 .modal-footer {
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid var(--border-color);
 }
 
 .modal-footer .label {
@@ -550,9 +587,9 @@ p {
         grid-template-columns: 1fr;
     }
     .modal-text-container {
-        padding: 20px;
+        padding: 24px;
     }
-    .modal-content{
+    .modal-content {
         width: 100%;
         max-width: 100%;
     }
@@ -572,19 +609,22 @@ p {
 }
 
 .modal-nav button {
-    background: rgba(22, 22, 22, 0.8); /* Твой --surface-color с прозрачностью */
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--border-color);
     color: var(--text-main);
     width: 44px;
     height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 50%;
+    font-size: 1.15rem;
     transition: var(--transition-fast);
 }
 
 .modal-nav button:hover {
     background: var(--accent-color);
+    color: #fff;
     border-color: var(--accent-color);
 }
 
@@ -592,7 +632,7 @@ p {
     position: relative;
     margin: 0 auto;
     padding-left: 30px;
-    border-left: 2px solid rgba(255, 255, 255, 0.1); /* Тонкая серая линия */
+    border-left: 2px solid var(--border-color); /* Тонкая серая линия */
 }
 
 .experience-item {
@@ -609,26 +649,26 @@ p {
     height: 12px;
     background: var(--accent-color);
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--accent-color);
 }
 
 .exp-date {
     font-size: 0.85rem;
     color: var(--accent-color);
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 0.03em;
     margin-bottom: 10px;
+    font-weight: 600;
 }
 
 .exp-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 5px;
+    font-size: 1.4rem;
+    margin-bottom: 6px;
 }
 
 .exp-company {
     font-weight: 600;
-    color: var(--text-main);
+    color: var(--text-secondary);
     margin-bottom: 15px;
+    font-size: 0.95rem;
 }
 
 .exp-content p {
@@ -636,8 +676,9 @@ p {
     max-width: 1000px;
     margin-bottom: 1rem;
 }
-.exp-content strong{
-    font-weight: 900;
+.exp-content strong {
+    font-weight: 700;
+    color: var(--text-main);
 }
 
 /* =========================================
@@ -645,7 +686,7 @@ p {
    ========================================= */
 :focus-visible {
     outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
+    outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
