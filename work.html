@@ -1,120 +1,243 @@
 ﻿<!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experience | Nikita Skrebnyov</title>
+    <title>Work | Nikita Skrebnyov</title>
+
+    <!-- Подключаем шрифт Inter из Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<nav>
-    <div>
-        <a href="index.html">NS</a>
-        <div>
-            <a href="index.html">Home</a>
-            <a href="work.html">Work</a>
-            <a href="NStoolkit.html">NS.Toolkit</a>
-        </div>
-    </div>
-</nav>
+<!-- Кастомный курсор (из main.js [2]) -->
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
 
-<main>
-    <section>
-        <h2>Professional Experience</h2>
-    </section>
-
-    <section>
-        <div>
-            <!-- DBHorizon -->
-            <div>
-                <p>September 2025 — August 2026</p>
-                <h3>BIM Manager</h3>
-                <p>DBHorizon</p>
-                <ul>
-                    <li><strong>BIM Server Administration:</strong> Set up and managed Revit Server infrastructure, network protocols, and access control.</li>
-                    <li><strong>BIM Standards & Coordination:</strong> Created custom parametric Revit Families and office-wide project templates.</li>
-                    <li><strong>Industrial Facility Renovation:</strong> Developed roof connections, steel structure details, and technical documentation.</li>
-                </ul>
-            </div>
-
-            <!-- NTT Mimarlık -->
-            <div>
-                <p>May 2025 — September 2025</p>
-                <h3>Architect</h3>
-                <p>NTT Mimarlık</p>
-                <ul>
-                    <li><strong>Private Villa (Bali):</strong> Developed LOD 350 BIM models and construction detail drawings.</li>
-                    <li><strong>Residential Complex (Saudi Arabia):</strong> Managed LOD 350 Revit modeling and multidisciplinary coordination.</li>
-                    <li><strong>Mixed-Use Project (Saudi Arabia):</strong> Modeled LOD 400 lighting fixtures and generated precise BOQ.</li>
-                </ul>
-            </div>
-
-            <!-- NTT Mimarlık Part-Time -->
-            <div>
-                <p>June 2024 — May 2025</p>
-                <h3>Architect / Intern</h3>
-                <p>NTT Mimarlık</p>
-                <ul>
-                    <li><strong>Pottuvil Island Resort (Sri Lanka):</strong> Produced LOD 200 Revit models and presentation diagrams.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h2>Previous Works</h2>
-        <div>
-            <div>
-                <h3>Mixed-Use Complex in Moscow</h3>
-                <p>18 Drawing Sets, 200+ Detail solutions.</p>
-            </div>
-            <div>
-                <h3>Industrial Facility Renovation</h3>
-                <p>Storage & Administrative Buildings.</p>
-            </div>
-            <div>
-                <h3>Apartment Block in Türkiye</h3>
-                <p>Managing team for Permit Drawings.</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h2>Let's work together.</h2>
-        <p>Have a project, collaboration, or idea in mind?</p>
-        <div>
-            <a href="mailto:your-email@example.com">Email Me</a>
-            <a href="#">LinkedIn</a>
-        </div>
-    </section>
-</main>
-
-<footer>
-    <div>
-        <a href="index.html">NS</a>
-        <p>Architect & BIM Specialist. Building digital workflows for the modern era.</p>
-    </div>
-    <div>
-        <h4>Navigation</h4>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="work.html">Work</a></li>
+<!-- HEADER: Навигация -->
+<header class="main-header">
+    <nav class="container">
+        <div class="logo">NS</div>
+        <ul class="nav-links">
+            <li><a href="index.html" >Home</a></li>
+            <li><a href="work.html" class="active">Work</a></li>
             <li><a href="NStoolkit.html">NS.Toolkit</a></li>
         </ul>
+    </nav>
+</header>
+
+<!-- Project Grid Section -->
+<section class="section vh-100" style="margin-top: 48px">
+    <div class="container">
+        <h2>Selected Works</h2>
+        <div class="grid grid-auto-work">
+
+            <!-- Project Card 1 -->
+            <div class="work-card"
+                 data-title="Mixed-Use Complex in Moscow"
+                 data-category="Moscow"
+                 data-description="Designed and engineered the steel sub-structure / sub-framing system for hanging exterior wall panels. Developed detailed shop drawings, specifications, and automated element schedules for manufacturing, purchasing and installation."
+                 data-images="assets/p1/00.webp,assets/p1/01.webp,assets/p1/02.webp,assets/p1/03.webp,assets/p1/04.webp"
+                 data-stack="18 Drawing Sets, 200+ Detail solutions.">
+                <div class="card-img-wrapper">
+                    <img src="assets/p1/00.webp" alt="Project 1">
+                </div>
+                <div class="card-info">
+                    <span class="card-category">Moscow</span>
+                    <h3>Mixed-Use Complex in Moscow</h3>
+                </div>
+            </div>
+            <!-- Project Card 2 -->
+            <div class="work-card"
+                 data-title="Permit Drawing for Residential Building"
+                 data-category="Çorum"
+                 data-description="Managing and coordinating team composed of architects and interns in process of preparing documentation for applying to get a permit ( Ruhsat ). Overseeing process of creation of revit templates, families and materials. Managing effective collaboration and educating team regarding Revit Server collaboration workflows such as Worksets."
+                 data-images="assets/p2/00.webp,assets/p2/01.webp,assets/p2/02.webp,assets/p2/03.webp,assets/p2/04.webp"
+                 data-stack="Creating Standarts, Managing Team, Controlling Drawing Sets">
+                <div class="card-img-wrapper">
+                    <img src="assets/p2/00.webp" alt="Project 2">
+                </div>
+                <div class="card-info">
+                    <span class="card-category">Çorum</span>
+                    <h3>Permit Drawing for Residential Building</h3>
+                </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="work-card"
+                 data-title="Industrial Facility Renovation (Storage & Administrative Buildings)"
+                 data-category="Moscow"
+                 data-description="Developed roof connections, steel details, and technical documentation; conducted structural-to-architectural coordination and construction accuracy checks."
+                 data-images="assets/p3/00.webp,assets/p3/01.webp,assets/p3/02.webp,assets/p1/03.webp,assets/p1/04.webp"
+                 data-stack="4 Buildings, Shop Drawings, Construction Documentation">
+                <div class="card-img-wrapper">
+                    <img src="assets/p3/00.webp" alt="Project 3">
+                </div>
+                <div class="card-info">
+                    <span class="card-category">Moscow</span>
+                    <h3>Industrial Facility Renovation</h3>
+                </div>
+            </div>
+
+            <!-- Project Card 4 -->
+            <div class="work-card"
+                 data-title="Villa Complex in Güzelbahçe, Izmir"
+                 data-category="Izmir"
+                 data-description="Created LOD 200 conceptual models, diagrams, and site plans. Produced high-quality 3D architectural renderings in 3ds Max for client presentations."
+                 data-images="assets/p4/00.webp,assets/p4/01.webp,assets/p4/02.webp,assets/p4/03.webp,assets/p4/04.webp"
+                 data-stack="Conceptual Design, Client Presentations, 3DS Max Rendering">
+                <div class="card-img-wrapper">
+                    <img src="assets/p4/00.webp" alt="Project 4">
+                </div>
+                <div class="card-info">
+                    <span class="card-category">Izmir</span>
+                    <h3>Villa Complex in Güzelbahçe, Izmir</h3>
+                </div>
+            </div>
+
+            <!-- Project Card 5 -->
+            <div class="work-card"
+                 data-title="Post-Disaster Community Learning Hub"
+                 data-category="Istanbul, created in collaboration with Ceren Öztürk"
+                 data-description="This project integrates Tarabya’s sloped topography, Bosphorus views, and local gardening culture to create a flexible, comfortable, and productive community hub for students and remote workers."
+                 data-images="assets/p5/00.webp,assets/p5/01.webp,assets/p5/02.webp,assets/p5/03.webp,assets/p5/04.webp"
+                 data-stack="Design, Collaboration, Technical Documentation">
+                <div class="card-img-wrapper">
+                    <img src="assets/p5/00.webp" alt="Project 5">
+                </div>
+                <div class="card-info">
+                    <span class="card-category">Istanbul</span>
+                    <h3>Post-Disaster Community Learning Hub</h3>
+                </div>
+            </div>
+
+            <!-- Project Card 6 -->
+            <div class="work-card"
+                 data-title="Wellness-centered community hub"
+                 data-category="Istanbul, created in collaboration with Ceren Öztürk"
+                 data-description="A wellness-centered community hub integrating landscape and architecture through sectional cuts, pockets, and spatial breaks."
+                 data-images="assets/p6/00.webp,assets/p6/01.webp,assets/p6/02.webp,assets/p6/03.webp,assets/p6/04.webp"
+                 data-stack="Design, Collaboration, Technical Documentation">
+                <div class="card-img-wrapper">
+                    <img src="assets/p6/00.webp" alt="Project 6">
+                </div>
+                <div class="card-info">
+                    <span class="card-category">Istanbul</span>
+                    <h3>Wellness-centered community hub</h3>
+                </div>
+            </div>
+
+        </div>
+
+
+            <!-- Добавь больше карточек по аналогии -->
     </div>
-    <div>
-        <h4>Contact</h4>
-        <ul>
-            <li><a href="#">WhatsApp</a></li>
-            <li><a href="mailto:your-email@example.com">Email</a></li>
-            <li><a href="#">LinkedIn</a></li>
-        </ul>
+</section>
+
+<!-- Обновленное модальное окно (добавляем навигацию) -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+        <button class="modal-close">&times;</button>
+
+        <div class="modal-body">
+            <div class="modal-image-container">
+                <img src="" id="modalImage" alt="Project Image">
+                <!-- Кнопки навигации -->
+                <div class="modal-nav">
+                    <button id="prevBtn">←</button>
+                    <button id="nextBtn">→</button>
+                </div>
+            </div>
+            <div class="modal-text-container">
+                <span id="modalCategory" class="text-subtitle"></span>
+                <h3 id="modalTitle"></h3>
+                <p id="modalDescription"></p>
+                <div class="modal-footer">
+                    <span class="label">Responsibilities:</span>
+                    <span id="modalStack" class="text-accent"></span>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <p>&copy; 2025 Nikita Skrebnyov. Built with precision.</p>
+</div>
+
+<!-- Experience Section -->
+<section class="section">
+    <div class="container">
+        <h2>Professional Experience</h2>
+
+        <div class="experience-timeline">
+            <!-- Item 1 -->
+            <div class="experience-item">
+                <div class="exp-date">2025 Sep — 2026 Aug</div>
+                <div class="exp-content">
+                    <h3>Arhcitect | Bim Manager</h3>
+                    <p class="exp-company">DBHorizon</p>
+                    <p> <strong>BIM Server Administration: </strong>Set up, configured, and managed Revit Server and BIM Server infrastructure, network protocols, and access control. Established project folder structures, naming conventions, custom BIM parameters, Worksets, and team workflows.</p>
+                    <p> <strong>BIM Standards & Coordination: </strong>Created custom parametric Revit Families and office-wide project templates. Developed technical documentation and shop drawings in compliance with GOST standards, ensuring cross-disciplinary model coordination.</p>
+                    <p> <strong>Industrial Facility Renovation (Storage & Administrative Buildings): </strong>Developed roof connections, steel structure details, and technical documentation; conducted structural-to-architectural coordination and construction accuracy checks.</p>
+                    <p> <strong>Mixed-Use Complex (Moscow): </strong>Designed and engineered the steel sub-structure / sub-framing system for hanging exterior wall panels. Developed detailed shop drawings, specifications, and automated element schedules for manufacturing, purchasing and installation.</p>
+                    <p> <strong>Managing team for preparing Permit Drawings ( Ruhsat projesi ): </strong>Managing and coordinating team composed of architects and interns in process of prerparing documentation for applying to get a permit ( Ruhsat ). Overseeng process of creation of Revit templates, families and materials. Managing effective collaboration and educating team regarding Revit Server collaboration workflows such as worksets.</p>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="experience-item">
+                <div class="exp-date">2025 May — 2025 Sep</div>
+                <div class="exp-content">
+                    <h3>Arhcitect</h3>
+                    <p class="exp-company">NTT MIMARLIK</p>
+                    <p> <strong>Private Villa (Bali): </strong>Developed LOD 350 BIM models, construction detail drawings, and sheet layouts under the supervision of the Senior Architect.</p>
+                    <p> <strong>Residential Complex (Saudi Arabia, 10 Buildings): </strong>Managed LOD 350 Revit modeling, architectural detailing, multidisciplinary coordination, and sheet generation.</p>
+                    <p> <strong>Mixed-Use Project (Saudi Arabia): </strong>Modeled LOD 400 lighting fixtures, detailed connections, and generated precise Quantity Takeoffs (BOQ).</p>
+                    <p> <strong>Villa Complex (İzmir Güzelbahçe): </strong>Created LOD 200 conceptual models, diagrams, and site plans. Produced high-quality 3D architectural renderings in 3ds Max for client presentations.</p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="experience-item">
+                <div class="exp-date">2024 Jul — 2025 May</div>
+                <div class="exp-content">
+                    <h3>Part Time Architect</h3>
+                    <p class="exp-company">NTT MIMARLIK</p>
+                    <p><strong>Pottuvil Island Resort (Sri Lanka, 120 Villas): </strong>Produced LOD 200 Revit models, architectural drawings, graphics, and presentation diagrams.</p>
+                    <p><strong>Private Villa (Bali): </strong>Assisted in early-stage LOD 350 modeling and architectural detailing.</p>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="experience-item">
+                <div class="exp-date">2025 Sep — 2025 Aug</div>
+                <div class="exp-content">
+                    <h3>Intern Architect</h3>
+                    <p class="exp-company">NTT MIMARLIK</p>
+                    <p><strong>Pottuvil Island Resort (Sri Lanka, 120 Villas): </strong>Assisted in early conceptual 3D modeling, spatial analysis, presentation board creation, and Photoshop plan rendering.</p>
+                </div>
+            </div>
+
+        </div>
     </div>
+</section>
+
+<footer >
+        <!-- margin-top: auto — это магия, которая прижимает блок к нижнему краю -->
+        <div class="flex-center" style="margin-top: auto; padding-top: 30px; width: 100%;">
+            <div style="display: flex; gap: 40px; justify-content: center; width: 100%; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px">
+                <a href="#">LinkedIn</a>
+                <a href="https://wa.me/905441960605">WhatsApp</a>
+                <a href="tel:+905441960605">Mobile</a>
+            </div>
+
+            <div style="border-top: 1px solid var(--surface-color)">
+                <p style="font-size: 0.8rem; letter-spacing: 3px; opacity: 0.6;margin-top: 5px; padding-bottom: 20px" >© 2026 NIKITA SKREBNYOV</p>
+            </div>
+        </div>
 </footer>
 
+<script src="js/main.js"></script>
 </body>
 </html>

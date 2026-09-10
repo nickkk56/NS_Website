@@ -3,23 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NS.Toolkit</title>
+    <title>Nikita Skrebnyov | Architect & BIM Specialist</title>
+
+    <!-- Подключаем шрифт Inter из Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Подключаем наш CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Временный фикс только для этой страницы */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1 0 auto;
+            display: flex;
+        }
+
+        main .vh-100 {
+            min-height: auto;
+            flex: 1;
+        }
+    </style>
+
 </head>
 <body>
-<nav>
-    <div>
-        <a href="index.html">NS</a>
-        <div>
-            <a href="index.html">Home</a>
-            <a href="work.html">Work</a>
-            <a href="NStoolkit.html">NS.Toolkit</a>
-        </div>
-    </div>
-</nav>
+
+<!-- Кастомный курсор (из main.js [2]) -->
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
+
+<!-- HEADER: Навигация -->
+<header class="main-header">
+    <nav class="container">
+        <div class="logo">NS</div>
+        <ul class="nav-links">
+            <li><a href="index.html" >Home</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="NStoolkit.html" class="active">NS.Toolkit</a></li>
+        </ul>
+    </nav>
+</header>
+
 
 <main>
-    <h1>NS.Toolkit</h1>
+    <!-- Hero Section -->
+    <section class="vh-100 flex-center">
+        <div class="container">
+            <h1 style="max-width: 50ch">NS.Toolkit</h1>
+            <h3>[Currently in Development]</h3>
+        </div>
+    </section>
 </main>
+
+
+<footer >
+    <!-- margin-top: auto — это магия, которая прижимает блок к нижнему краю -->
+    <div class="flex-center" style="margin-bottom: 20px; width: 100%;">
+        <div style="display: flex; gap: 40px; justify-content: center; width: 100%; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px">
+            <a href="#">LinkedIn</a>
+            <a href="https://wa.me/905441960605">WhatsApp</a>
+            <a href="tel:+905441960605">Mobile</a>
+        </div>
+
+        <div style="border-top: 1px solid var(--surface-color)">
+            <p style="font-size: 0.8rem; letter-spacing: 3px; opacity: 0.6;margin-top: 5px; padding-bottom: 20px" >© 2026 NIKITA SKREBNYOV</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
 </body>
 </html>
