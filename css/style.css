@@ -32,7 +32,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: none; /* Используем кастомный курсор [3] */
+}
+
+@media (pointer: fine) {
+    * {
+        cursor: none;
+    }
 }
 
 html {
@@ -136,10 +141,6 @@ p {
     grid-template-columns: repeat(3, 1fr);
 }
 
-.top-margin{
-    margin-top:0;
-}
-
 /* =========================================
    5. UI COMPONENTS (Cards, Buttons, Modals)
    ========================================= */
@@ -159,7 +160,9 @@ p {
 
 /* Button */
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 14px 32px;
     background: var(--accent-color);
     color: #fff;
@@ -175,6 +178,12 @@ p {
     opacity: 0.6;
     transform: scale(1.1); /* Легкое увеличение на 5% */
     transition: opacity var(--transition-fast), transform var(--transition-smooth);
+}
+
+/* Нажатое состояние во время задержки перехода (см. setupDelayedLinks в js/main.js) */
+.btn.is-pressed {
+    opacity: 1;
+    transform: scale(0.96);
 }
 
 /* =========================================
@@ -213,7 +222,7 @@ p {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Поверх всего */
+    z-index: 900;
 
     /* Эффект стекла */
     background: rgba(10, 10, 10, 0.7); /* Полупрозрачный черный */
@@ -289,13 +298,13 @@ p {
     .nav-links a {
         font-size: 0.75rem;
         letter-spacing: 1px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
     }
     .footer-class {
         min-height: 100dvh;
         padding: 0;
-    }
-    .top-margin{
-        margin-top:200px;
     }
 }
 /* Скрываем кастомный курсор на устройствах с сенсорным экраном (touchscreens) */
@@ -413,19 +422,16 @@ p {
         transform: translateY(0) scale(1); /* Возвращаем в нормальное положение */
     }
     .cta-card h3{
-        color: var(--bg-color);
-
+        color: var(--text-main);
     }
     .cta-card p{
-           color: var(--bg-color);
-
-       }
+        color: var(--text-secondary);
+    }
 }
 
 /* --- Work Card Styles --- */
 .work-card {
     position: relative;
-    cursor: pointer;
     background: var(--surface-color);
     overflow: hidden;
     transition: transform var(--transition-smooth);
@@ -506,7 +512,6 @@ p {
     background: none; border: none;
     color: var(--accent-color);
     font-size: 2rem;
-    cursor: pointer;
     z-index: 10;
 }
 
@@ -570,12 +575,11 @@ p {
     background: rgba(22, 22, 22, 0.8); /* Твой --surface-color с прозрачностью */
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--text-main);
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     transition: var(--transition-fast);
 }
 
@@ -634,4 +638,28 @@ p {
 }
 .exp-content strong{
     font-weight: 900;
+}
+
+/* =========================================
+   8. ACCESSIBILITY
+   ========================================= */
+:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .cursor-outline {
+        display: none !important;
+    }
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }

@@ -15,7 +15,6 @@
 <body>
 
 <!-- Кастомный курсор (из main.js [2]) -->
-<div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
 
 <!-- HEADER: Навигация -->
@@ -30,6 +29,7 @@
     </nav>
 </header>
 
+<main>
 <!-- Project Grid Section -->
 <section class="section vh-100" style="margin-top: 48px">
     <div class="container">
@@ -37,14 +37,14 @@
         <div class="grid grid-auto-work">
 
             <!-- Project Card 1 -->
-            <div class="work-card"
+            <div class="work-card" tabindex="0" role="button"
                  data-title="Mixed-Use Complex in Moscow"
                  data-category="Moscow"
                  data-description="Designed and engineered the steel sub-structure / sub-framing system for hanging exterior wall panels. Developed detailed shop drawings, specifications, and automated element schedules for manufacturing, purchasing and installation."
                  data-images="assets/p1/00.webp,assets/p1/01.webp,assets/p1/02.webp,assets/p1/03.webp,assets/p1/04.webp"
                  data-stack="18 Drawing Sets, 200+ Detail solutions.">
                 <div class="card-img-wrapper">
-                    <img src="assets/p1/00.webp" alt="Project 1">
+                    <img src="assets/p1/00.webp" alt="Mixed-Use Complex in Moscow">
                 </div>
                 <div class="card-info">
                     <span class="card-category">Moscow</span>
@@ -52,14 +52,15 @@
                 </div>
             </div>
             <!-- Project Card 2 -->
-            <div class="work-card"
+            <div class="work-card" tabindex="0" role="button"
                  data-title="Permit Drawing for Residential Building"
                  data-category="Çorum"
                  data-description="Managing and coordinating team composed of architects and interns in process of preparing documentation for applying to get a permit ( Ruhsat ). Overseeing process of creation of revit templates, families and materials. Managing effective collaboration and educating team regarding Revit Server collaboration workflows such as Worksets."
-                 data-images="assets/p2/00.webp,assets/p2/01.webp,assets/p2/02.webp,assets/p2/03.webp,assets/p2/04.webp"
+                 data-images="assets/p2/00.webp,assets/p2/01.webp,assets/p2/02.webp,assets/p2/03.webp
+                 .webp"
                  data-stack="Creating Standarts, Managing Team, Controlling Drawing Sets">
                 <div class="card-img-wrapper">
-                    <img src="assets/p2/00.webp" alt="Project 2">
+                    <img src="assets/p2/00.webp" alt="Permit Drawing for Residential Building in Çorum">
                 </div>
                 <div class="card-info">
                     <span class="card-category">Çorum</span>
@@ -68,14 +69,14 @@
             </div>
 
             <!-- Project Card 3 -->
-            <div class="work-card"
+            <div class="work-card" tabindex="0" role="button"
                  data-title="Industrial Facility Renovation (Storage & Administrative Buildings)"
                  data-category="Moscow"
                  data-description="Developed roof connections, steel details, and technical documentation; conducted structural-to-architectural coordination and construction accuracy checks."
-                 data-images="assets/p3/00.webp,assets/p3/01.webp,assets/p3/02.webp,assets/p1/03.webp,assets/p1/04.webp"
+                 data-images="assets/p3/00.webp,assets/p3/01.webp,assets/p3/02.webp,assets/p3/03.webp,assets/p3/04.webp"
                  data-stack="4 Buildings, Shop Drawings, Construction Documentation">
                 <div class="card-img-wrapper">
-                    <img src="assets/p3/00.webp" alt="Project 3">
+                    <img src="assets/p3/00.webp" alt="Industrial Facility Renovation in Moscow">
                 </div>
                 <div class="card-info">
                     <span class="card-category">Moscow</span>
@@ -84,14 +85,14 @@
             </div>
 
             <!-- Project Card 4 -->
-            <div class="work-card"
+            <div class="work-card" tabindex="0" role="button"
                  data-title="Villa Complex in Güzelbahçe, Izmir"
                  data-category="Izmir"
                  data-description="Created LOD 200 conceptual models, diagrams, and site plans. Produced high-quality 3D architectural renderings in 3ds Max for client presentations."
                  data-images="assets/p4/00.webp,assets/p4/01.webp,assets/p4/02.webp,assets/p4/03.webp,assets/p4/04.webp"
                  data-stack="Conceptual Design, Client Presentations, 3DS Max Rendering">
                 <div class="card-img-wrapper">
-                    <img src="assets/p4/00.webp" alt="Project 4">
+                    <img src="assets/p4/00.webp" alt="Villa Complex in Güzelbahçe, Izmir">
                 </div>
                 <div class="card-info">
                     <span class="card-category">Izmir</span>
@@ -100,14 +101,14 @@
             </div>
 
             <!-- Project Card 5 -->
-            <div class="work-card"
+            <div class="work-card" tabindex="0" role="button"
                  data-title="Post-Disaster Community Learning Hub"
-                 data-category="Istanbul, created in collaboration with Ceren Öztürk"
-                 data-description="This project integrates Tarabya’s sloped topography, Bosphorus views, and local gardening culture to create a flexible, comfortable, and productive community hub for students and remote workers."
+                 data-category="Istanbul"
+                 data-description="This project integrates Tarabya’s sloped topography, Bosphorus views, and local gardening culture to create a flexible, comfortable, and productive community hub for students and remote workers. Created in collaboration with Ceren Öztürk."
                  data-images="assets/p5/00.webp,assets/p5/01.webp,assets/p5/02.webp,assets/p5/03.webp,assets/p5/04.webp"
                  data-stack="Design, Collaboration, Technical Documentation">
                 <div class="card-img-wrapper">
-                    <img src="assets/p5/00.webp" alt="Project 5">
+                    <img src="assets/p5/00.webp" alt="Post-Disaster Community Learning Hub in Istanbul">
                 </div>
                 <div class="card-info">
                     <span class="card-category">Istanbul</span>
@@ -116,14 +117,14 @@
             </div>
 
             <!-- Project Card 6 -->
-            <div class="work-card"
+            <div class="work-card" tabindex="0" role="button"
                  data-title="Wellness-centered community hub"
-                 data-category="Istanbul, created in collaboration with Ceren Öztürk"
-                 data-description="A wellness-centered community hub integrating landscape and architecture through sectional cuts, pockets, and spatial breaks."
+                 data-category="Istanbul"
+                 data-description="A wellness-centered community hub integrating landscape and architecture through sectional cuts, pockets, and spatial breaks. Created in collaboration with Ceren Öztürk."
                  data-images="assets/p6/00.webp,assets/p6/01.webp,assets/p6/02.webp,assets/p6/03.webp,assets/p6/04.webp"
                  data-stack="Design, Collaboration, Technical Documentation">
                 <div class="card-img-wrapper">
-                    <img src="assets/p6/00.webp" alt="Project 6">
+                    <img src="assets/p6/00.webp" alt="Wellness-centered Community Hub in Istanbul">
                 </div>
                 <div class="card-info">
                     <span class="card-category">Istanbul</span>
@@ -139,17 +140,16 @@
 </section>
 
 <!-- Обновленное модальное окно (добавляем навигацию) -->
-<div class="modal-overlay" id="modalOverlay">
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-content">
-        <button class="modal-close">&times;</button>
+        <button class="modal-close" aria-label="Close">&times;</button>
 
         <div class="modal-body">
             <div class="modal-image-container">
                 <img src="" id="modalImage" alt="Project Image">
-                <!-- Кнопки навигации -->
                 <div class="modal-nav">
-                    <button id="prevBtn">←</button>
-                    <button id="nextBtn">→</button>
+                    <button id="prevBtn" aria-label="Previous image">←</button>
+                    <button id="nextBtn" aria-label="Next image">→</button>
                 </div>
             </div>
             <div class="modal-text-container">
@@ -222,6 +222,7 @@
         </div>
     </div>
 </section>
+</main>
 
 <footer >
         <!-- margin-top: auto — это магия, которая прижимает блок к нижнему краю -->

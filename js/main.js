@@ -83,82 +83,111 @@ const setupDelayedLinks = () => {
 
 // Запускаем функцию после загрузки DOM
 document.addEventListener('DOMContentLoaded', setupDelayedLinks);
-// Modal Elements
+// Modal Elements — guarded so pages without a modal don't throw
 const modalOverlay = document.getElementById('modalOverlay');
-const modalClose = document.querySelector('.modal-close');
-const workCards = document.querySelectorAll('.work-card');
 
-const modalTitle = document.getElementById('modalTitle');
-const modalCategory = document.getElementById('modalCategory');
-const modalDescription = document.getElementById('modalDescription');
-const modalImage = document.getElementById('modalImage');
-const modalStack = document.getElementById('modalStack');
+if (modalOverlay) {
+    const modalClose = document.querySelector('.modal-close');
+    const workCards = document.querySelectorAll('.work-card');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalImage = document.getElementById('modalImage');
+    const modalStack = document.getElementById('modalStack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
 
-// Gallery State
-let currentImages = [];
-let currentIndex = 0;
+    let currentImages = [];
+    let currentIndex = 0;
+    let previouslyFocused = null;
 
-// Navigation Buttons
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
+    const updateModalImage = () => {
+        modalImage.src = currentImages[currentIndex];
+    };
 
-// Функция обновления картинки в модалке
-const updateModalImage = () => {
-    modalImage.src = currentImages[currentIndex];
-};
-
-workCards.forEach(card => {
-    card.addEventListener('click', () => {
-        // 1. Извлекаем данные
+    const openModal = (card) => {
         const title = card.getAttribute('data-title');
         const category = card.getAttribute('data-category');
         const description = card.getAttribute('data-description');
         const stack = card.getAttribute('data-stack');
-
-        // 2. Работа с галереей (превращаем строку в массив)
         const imagesAttr = card.getAttribute('data-images');
         currentImages = imagesAttr ? imagesAttr.split(',') : [];
         currentIndex = 0;
 
-        // 3. Наполняем текст
         modalTitle.textContent = title;
         modalCategory.textContent = category;
         modalDescription.textContent = description;
         modalStack.textContent = stack;
 
-        // 4. Настраиваем картинку
         if (currentImages.length > 0) {
             updateModalImage();
-            // Показываем/скрываем кнопки навигации (если фото больше одного)
-            document.querySelector('.modal-nav').style.display = currentImages.length > 1 ? 'flex' : 'none';
+            const modalNav = document.querySelector('.modal-nav');
+            if (modalNav) modalNav.style.display = currentImages.length > 1 ? 'flex' : 'none';
         }
 
-        // 5. Открываем
+        previouslyFocused = document.activeElement;
         modalOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
+        if (modalClose) modalClose.focus();
+    };
+
+    const closeModal = () => {
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        if (previouslyFocused) previouslyFocused.focus();
+    };
+
+    workCards.forEach(card => {
+        card.addEventListener('click', () => openModal(card));
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openModal(card);
+            }
+        });
     });
-});
 
-// Навигация по фото
-nextBtn.addEventListener('click', (e) => {
-    e.stopPropagation(); // Чтобы не сработал клик по overlay
-    currentIndex = (currentIndex + 1) % currentImages.length;
-    updateModalImage();
-});
+    if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex + 1) % currentImages.length;
+            updateModalImage();
+        });
+    }
 
-prevBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-    updateModalImage();
-});
+    if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+            updateModalImage();
+        });
+    }
 
-// Закрытие
-const closeModal = () => {
-    modalOverlay.classList.remove('active');
-    document.body.style.overflow = 'auto';
-};
+    if (modalClose) modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) closeModal();
+    });
 
-modalClose.addEventListener('click', closeModal);
-modalOverlay.addEventListener('click', (e) => {
-    if (e.target === modalOverlay) closeModal();
-});
+    document.addEventListener('keydown', (e) => {
+        if (!modalOverlay.classList.contains('active')) return;
+
+        if (e.key === 'Escape') {
+            closeModal();
+            return;
+        }
+
+        if (e.key === 'Tab') {
+            const focusable = modalOverlay.querySelectorAll('button, [tabindex]:not([tabindex="-1"])');
+            if (focusable.length === 0) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
+    });
+}
