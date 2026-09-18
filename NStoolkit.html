@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nikita Skrebnyov | Architect & BIM Specialist</title>
+    <title>NS Toolkit | Power Tools for Autodesk Revit</title>
+    <meta name="description" content="NS Toolkit — A suite of specialized utilities that eliminate repetitive tasks, catch errors early, and streamline your Revit workflow.">
 
     <!-- Подключаем шрифт Inter из Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +15,6 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        /* Временный фикс только для этой страницы */
         body {
             display: flex;
             flex-direction: column;
@@ -23,60 +23,459 @@
 
         main {
             flex: 1 0 auto;
-            display: flex;
         }
 
-        main .vh-100 {
-            min-height: auto;
+        /* Tool panel card */
+        .tool-panel {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+        }
+
+        .tool-panel:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(0, 0, 0, 0.12);
+        }
+
+        .tool-panel-icon {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+
+        .tool-panel h3 {
+            margin-bottom: 12px;
+        }
+
+        .tool-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tool-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .tool-list li:last-child {
+            border-bottom: none;
+        }
+
+        .tool-list li strong {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        /* Stats bar */
+        .stats-bar {
+            display: flex;
+            gap: 60px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            margin-top: 6px;
+        }
+
+        /* Tech spec row */
+        .spec-row {
+            display: flex;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .spec-row:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            min-width: 180px;
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .spec-value {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* CTA section background */
+        .cta-section {
+            background: var(--surface-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 80px 60px;
+            text-align: center;
+        }
+
+        /* Audience tags */
+        .audience-tags {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .audience-tag {
+            background: var(--accent-soft);
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 10px 24px;
+            border-radius: 980px;
+            letter-spacing: 0.01em;
+        }
+
+        @media (max-width: 768px) {
+            .stats-bar {
+                gap: 30px;
+            }
+
+            .cta-section {
+                padding: 48px 24px;
+            }
+
+            .spec-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        /* Hero with centered content and bottom stats */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .hero-content {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 0 40px;
+            width: 100%;
+        }
+
+        .hero-content .container {
+            width: 100%;
+        }
+
+        .hero-stats {
+            margin-top: auto;
+            padding: 0 0 48px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Signup form */
+        .signup-form {
+            max-width: 480px;
+            width: 100%;
+        }
+
+        .signup-form form {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .signup-form input[type="email"] {
+            flex: 1;
+            padding: 14px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background: var(--surface-color);
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color var(--transition-smooth);
+        }
+
+        .signup-form input[type="email"]:focus {
+            border-color: var(--accent-color);
+        }
+
+        .signup-note {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 12px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 600px) {
+            .signup-form form {
+                flex-direction: column;
+            }
         }
     </style>
-
 </head>
 <body>
 
-<!-- Кастомный курсор (из main.js [2]) -->
-<div class="cursor-outline"></div>
+<!-- Кастомный курсор -->
+<main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="container">
+                <span class="text-subtitle">Autodesk Revit Plugin Suite</span>
+                <h1 style="max-width: 50ch">NS Toolkit — Power Tools for Autodesk Revit</h1>
+                <p style="margin-bottom: 32px; text-align: center;">
+                    A suite of specialized utilities that eliminate repetitive tasks, catch errors early,
+                    and streamline your Revit workflow.
+                </p>
+                <p class="text-subtitle">Currently in Development</p>
+            </div>
+        </div>
+        <!-- Key Stats Bar -->
+        <div class="hero-stats">
+            <div class="container">
+                <div class="stats-bar reveal">
+                    <div class="stat-item">
+                        <div class="stat-number">14</div>
+                        <div class="stat-label">Specialized Tools</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Workflow Categories</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2022+</div>
+                        <div class="stat-label">Revit Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <span class="text-subtitle">Features</span>
+            <h2>Everything You Need, One Tab</h2>
+
+            <div class="grid grid-auto features-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <!-- Audit -->
+                <div class="tool-panel reveal">
+                    <div class="tool-panel-icon">🔍</div>
+                    <h3>Audit</h3>
+                    <ul class="tool-list">
+                        <li><strong>Check Untagged</strong> — Quickly find elements missing tags across your project</li>
+                        <li><strong>Schedule Check</strong> — Validate schedules for data integrity</li>
+                    </ul>
+                </div>
+
+                <!-- Manage -->
+                <div class="tool-panel reveal">
+                    <div class="tool-panel-icon">⚙️</div>
+                    <h3>Manage</h3>
+                    <ul class="tool-list">
+                        <li><strong>Family Manager</strong> — Load, unload, and manage project families with ease</li>
+                        <li><strong>Shared Parameter Manager</strong> — Create, edit, and bind shared parameters without leaving Revit</li>
+                        <li><strong>Font Replacer</strong> — Swap missing or inconsistent fonts across the entire project</li>
+                    </ul>
+                </div>
+
+                <!-- Modeling -->
+                <div class="tool-panel reveal">
+                    <div class="tool-panel-icon">🔧</div>
+                    <h3>Modeling</h3>
+                    <ul class="tool-list">
+                        <li><strong>Spline to Arcs</strong> — Convert spline geometry to clean arcs for better documentation and fabrication</li>
+                    </ul>
+                </div>
+
+                <!-- Schedules -->
+                <div class="tool-panel reveal">
+                    <div class="tool-panel-icon">📋</div>
+                    <h3>Schedules</h3>
+                    <ul class="tool-list">
+                        <li><strong>Schedule Manager</strong> — Organize, duplicate, and standardize project schedules</li>
+                    </ul>
+                </div>
+
+                <!-- Sheets -->
+                <div class="tool-panel reveal">
+                    <div class="tool-panel-icon">📄</div>
+                    <h3>Sheets</h3>
+                    <ul class="tool-list">
+                        <li><strong>Create Sheet Set</strong> — Generate sheet sets from templates or existing sheets</li>
+                        <li><strong>Sheet Renumber</strong> — Batch-renumber sheet numbers with prefix/suffix rules</li>
+                        <li><strong>Batch Sheet Creator</strong> — Create multiple sheets at once from a single operation</li>
+                        <li><strong>Publish</strong> — Streamlined sheet publishing workflow</li>
+                    </ul>
+                </div>
+
+                <!-- Views -->
+                <div class="tool-panel reveal">
+                    <div class="tool-panel-icon">👁️</div>
+                    <h3>Views</h3>
+                    <ul class="tool-list">
+                        <li><strong>Crop View</strong> — Quickly crop and adjust view boundaries</li>
+                        <li><strong>Grid to Crop</strong> — Automatically fit view crop to structural grids</li>
+                        <li><strong>Section Box Around Selection</strong> — Create section boxes that precisely frame selected elements</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshot Placeholder -->
+    <!--    <section class="section" style="padding-top: 0;">-->
+    <!--        <div class="container">-->
+    <!--            <div class="card reveal" style="padding: 0; overflow: hidden;">-->
+    <!--                <div style="background: var(&#45;&#45;bg-color); display: flex; align-items: center; justify-content: center; height: 400px; flex-direction: column;">-->
+    <!--                    <img src="assets/1.webp" height="1080" width="1920" alt=""/>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </section>-->
+
+    <!-- Technical Specs -->
+    <section class="section">
+        <div class="container">
+            <span class="text-subtitle">Technical Specifications</span>
+            <h2 style="margin-bottom: 40px;">Built for Performance</h2>
+
+            <div class="card reveal" style="padding: 40px;">
+                <div class="spec-row">
+                    <span class="spec-label">Compatible</span>
+                    <span class="spec-value">Revit 2022 and later</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Type</span>
+                    <span class="spec-value">External plugin (.dll add-in)</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Architecture</span>
+                    <span class="spec-value">C# / .NET / WPF</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Installation</span>
+                    <span class="spec-value">Install via provided installer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why NS Toolkit -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px;">Built by Architects, for Architects</h2>
+            <p style="text-align: center; max-width: 80ch; margin: 0 auto 50px;">
+                Created by a practicing architect who understands real workflow pain points.
+                NS Toolkit saves hours of manual cleanup and renumbering work.
+            </p>
+
+            <div class="grid grid-auto">
+                <div class="card reveal" style="padding: 40px; text-align: center;">
+                    <h3>Expert Knowledge</h3>
+                    <p>Built by a practicing architect who understands real workflow pain points</p>
+                </div>
+                <div class="card reveal" style="padding: 40px; text-align: center;">
+                    <h3>Lightweight</h3>
+                    <p>Integrates directly into your existing ribbon without overhead</p>
+                </div>
+                <div class="card reveal" style="padding: 40px; text-align: center;">
+                    <h3>Time Saving</h3>
+                    <p>Saves hours of manual cleanup and renumbering work every week</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <span class="text-subtitle" style="text-align: center;">For Professionals</span>
+            <h2 style="text-align: center; margin-bottom: 40px;">Who It's For</h2>
+
+            <div class="audience-tags reveal">
+                <span class="audience-tag">BIM Coordinators</span>
+                <span class="audience-tag">Revit Consultants</span>
+                <span class="audience-tag">Design Firms</span>
+                <span class="audience-tag">AEC Professionals</span>
+            </div>
+        </div>
+    </section>
+
+</main>
 
 <!-- HEADER: Навигация -->
+<div class="cursor-outline"></div>
+
 <header class="main-header">
     <nav class="container">
         <div class="logo">NS</div>
         <ul class="nav-links">
-            <li><a href="index.html" >Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="work.html">Work</a></li>
             <li><a href="NStoolkit.html" class="active">NS.Toolkit</a></li>
         </ul>
     </nav>
 </header>
 
-
-<main>
-    <!-- Hero Section -->
-    <section class="vh-100 flex-center">
-        <div class="container">
-            <h1 style="max-width: 50ch">NS.Toolkit</h1>
-            <h3>[Currently in Development]</h3>
-        </div>
-    </section>
-</main>
-
-
-<footer >
-    <!-- margin-top: auto — это магия, которая прижимает блок к нижнему краю -->
-    <div class="flex-center" style="margin-bottom: 20px; width: 100%;">
-        <div style="display: flex; gap: 40px; justify-content: center; width: 100%; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px">
-            <a href="https://www.linkedin.com/in/nikita-skrebnyov/">LinkedIn</a>
-            <a href="https://wa.me/905441960605">WhatsApp</a>
-            <a href="tel:+905441960605">Mobile</a>
+<!-- FOOTER -->
+<footer class="footer-class" style="display: flex; flex-direction: column; min-height: 100vh;">
+    <div class="container" style="display: flex; flex-direction: column; flex-grow: 1;">
+        <div class="flex-center" style="margin-top: auto; margin-bottom: 40px;">
+            <h2 style="margin-bottom: 20px;">Have questions about NS Toolkit?</h2>
+            <p style="margin-bottom: 40px;">I'm always open to Suggestions and Feedback.</p>
+            <a href="mailto:nikita.skrebnyov@icloud.com" class="btn" style="margin-bottom: 40px;">Get in Touch</a>
         </div>
 
-        <div style="border-top: 1px solid var(--border-color)">
-            <p style="font-size: 0.8rem; letter-spacing: 3px; opacity: 0.6;margin-top: 5px; padding-bottom: 20px" >© 2026 NIKITA SKREBNYOV</p>
+        <div class="flex-center" style="margin-top: auto; padding-top: 30px; width: 100%;">
+            <div style="display: flex; gap: 40px; justify-content: center; width: 100%; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px">
+                <a href="https://www.linkedin.com/in/nikita-skrebnyov/">LinkedIn</a>
+                <a href="https://wa.me/905441960605">WhatsApp</a>
+                <a href="tel:+905441960605">Mobile</a>
+            </div>
+            <div style="border-top: 1px solid var(--border-color)">
+                <p style="font-size: 0.8rem; letter-spacing: 3px; opacity: 0.6;margin-top: 5px; padding-bottom: 20px">© 2026 NIKITA SKREBNYOV</p>
+            </div>
         </div>
     </div>
 </footer>
 
+<!-- Подключаем JS для курсора -->
 <script src="js/main.js"></script>
 </body>
 </html>
