@@ -208,7 +208,7 @@
         /* Signup form */
         .signup-form {
             max-width: 480px;
-            width: 100%;
+            margin: 0 auto;
         }
 
         .signup-form form {
@@ -261,7 +261,15 @@
                     A suite of specialized utilities that eliminate repetitive tasks, catch errors early,
                     and streamline your Revit workflow.
                 </p>
-                <p class="text-subtitle">Currently in Development</p>
+                <p class="text-subtitle" style="margin-bottom: 24px;">Closed Beta soon...</p>
+                <div class="signup-form reveal">
+                    <form action="https://mail.nikitaskrebnyov.com/subscribe" method="POST">
+                        <input type="email" name="email" placeholder="your@email.com" required />
+                        <input type="hidden" name="source" value="Website" />
+                        <button type="submit" class="btn">Notify Me</button>
+                    </form>
+                    <p class="signup-note">Be the first to know when NS Toolkit launches.</p>
+                </div>
             </div>
         </div>
         <!-- Key Stats Bar -->
@@ -284,7 +292,6 @@
             </div>
         </div>
     </section>
-
 
     <!-- Features Section -->
     <section class="section">
@@ -437,6 +444,7 @@
         </div>
     </section>
 
+
 </main>
 
 <!-- HEADER: Навигация -->
@@ -457,9 +465,16 @@
 <footer class="footer-class" style="display: flex; flex-direction: column; min-height: 100vh;">
     <div class="container" style="display: flex; flex-direction: column; flex-grow: 1;">
         <div class="flex-center" style="margin-top: auto; margin-bottom: 40px;">
-            <h2 style="margin-bottom: 20px;">Have questions about NS Toolkit?</h2>
-            <p style="margin-bottom: 40px;">I'm always open to Suggestions and Feedback.</p>
-            <a href="mailto:nikita.skrebnyov@icloud.com" class="btn" style="margin-bottom: 40px;">Get in Touch</a>
+            <h2>Get Early Access</h2>
+            <p style="margin-bottom: 32px;">Be the first to try NS Toolkit when it launches.</p>
+            <div class="signup-form">
+                <form action="https://mail.nikitaskrebnyov.com/subscribe" method="POST">
+                    <input type="email" name="email" placeholder="your@email.com" required />
+                    <input type="hidden" name="source" value="Website" />
+                    <button type="submit" class="btn">Notify Me</button>
+                </form>
+                <p class="signup-note">No spam — just one email when we're ready.</p>
+            </div>
         </div>
 
         <div class="flex-center" style="margin-top: auto; padding-top: 30px; width: 100%;">
