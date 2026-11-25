@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NS Toolkit | Power Tools for Autodesk Revit</title>
-    <meta name="description" content="NS Toolkit — A suite of specialized utilities that eliminate repetitive tasks, catch errors early, and streamline your Revit workflow.">
+    <title>NS.Toolkit | Free Productivity Tools for Autodesk Revit</title>
+    <meta name="description" content="NS.Toolkit is a free productivity suite for Autodesk Revit with 12 tools for auditing documentation, managing projects, converting geometry, and working with sheets and views.">
 
     <!-- Подключаем шрифт Inter из Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -205,46 +205,6 @@
             align-items: center;
         }
 
-        /* Signup form */
-        .signup-form {
-            max-width: 480px;
-            margin: 0 auto;
-        }
-
-        .signup-form form {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .signup-form input[type="email"] {
-            flex: 1;
-            padding: 14px 20px;
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            background: var(--surface-color);
-            font-family: inherit;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color var(--transition-smooth);
-        }
-
-        .signup-form input[type="email"]:focus {
-            border-color: var(--accent-color);
-        }
-
-        .signup-note {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 12px;
-            opacity: 0.7;
-        }
-
-        @media (max-width: 600px) {
-            .signup-form form {
-                flex-direction: column;
-            }
-        }
     </style>
 </head>
 <body>
@@ -255,21 +215,12 @@
     <section class="hero-section">
         <div class="hero-content">
             <div class="container">
-                <span class="text-subtitle">Autodesk Revit Plugin Suite</span>
-                <h1 style="max-width: 50ch">NS Toolkit — Power Tools for Autodesk Revit</h1>
+                <h1 style="max-width: 50ch">NS.Toolkit for Autodesk Revit</h1>
                 <p style="margin-bottom: 32px; text-align: center;">
-                    A suite of specialized utilities that eliminate repetitive tasks, catch errors early,
-                    and streamline your Revit workflow.
+                    A free productivity suite for everyday Revit tasks, from checking documentation
+                    and managing shared parameters to creating sheets and publishing deliverables.
                 </p>
-                <p class="text-subtitle" style="margin-bottom: 24px;">Closed Beta soon...</p>
-                <div class="signup-form reveal">
-                    <form action="https://mail.nikitaskrebnyov.com/subscribe" method="POST">
-                        <input type="email" name="email" placeholder="your@email.com" required />
-                        <input type="hidden" name="source" value="Website" />
-                        <button type="submit" class="btn">Notify Me</button>
-                    </form>
-                    <p class="signup-note">Be the first to know when NS Toolkit launches.</p>
-                </div>
+                <a href="https://nikitaskrebnyov.gumroad.com/l/acozxy" class="btn">Download on Gumroad</a>
             </div>
         </div>
         <!-- Key Stats Bar -->
@@ -277,11 +228,11 @@
             <div class="container">
                 <div class="stats-bar reveal">
                     <div class="stat-item">
-                        <div class="stat-number">14</div>
+                        <div class="stat-number">12</div>
                         <div class="stat-label">Specialized Tools</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">6</div>
+                        <div class="stat-number">5</div>
                         <div class="stat-label">Workflow Categories</div>
                     </div>
                     <div class="stat-item">
@@ -315,9 +266,8 @@
                     <div class="tool-panel-icon">⚙️</div>
                     <h3>Manage</h3>
                     <ul class="tool-list">
-                        <li><strong>Family Manager</strong> — Load, unload, and manage project families with ease</li>
                         <li><strong>Shared Parameter Manager</strong> — Create, edit, and bind shared parameters without leaving Revit</li>
-                        <li><strong>Font Replacer</strong> — Swap missing or inconsistent fonts across the entire project</li>
+                        <li><strong>Backup Document</strong> — Back up your Revit project</li>
                     </ul>
                 </div>
 
@@ -326,16 +276,7 @@
                     <div class="tool-panel-icon">🔧</div>
                     <h3>Modeling</h3>
                     <ul class="tool-list">
-                        <li><strong>Spline to Arcs</strong> — Convert spline geometry to clean arcs for better documentation and fabrication</li>
-                    </ul>
-                </div>
-
-                <!-- Schedules -->
-                <div class="tool-panel reveal">
-                    <div class="tool-panel-icon">📋</div>
-                    <h3>Schedules</h3>
-                    <ul class="tool-list">
-                        <li><strong>Schedule Manager</strong> — Organize, duplicate, and standardize project schedules</li>
+                        <li><strong>Spline To Arcs</strong> — Convert spline geometry to clean arcs for better documentation and fabrication</li>
                     </ul>
                 </div>
 
@@ -344,7 +285,7 @@
                     <div class="tool-panel-icon">📄</div>
                     <h3>Sheets</h3>
                     <ul class="tool-list">
-                        <li><strong>Create Sheet Set</strong> — Generate sheet sets from templates or existing sheets</li>
+                        <li><strong>Create Sheet Set</strong> — Create a named sheet set from sheets selected in the Project Browser</li>
                         <li><strong>Sheet Renumber</strong> — Batch-renumber sheet numbers with prefix/suffix rules</li>
                         <li><strong>Batch Sheet Creator</strong> — Create multiple sheets at once from a single operation</li>
                         <li><strong>Publish</strong> — Streamlined sheet publishing workflow</li>
@@ -357,7 +298,7 @@
                     <h3>Views</h3>
                     <ul class="tool-list">
                         <li><strong>Crop View</strong> — Quickly crop and adjust view boundaries</li>
-                        <li><strong>Grid to Crop</strong> — Automatically fit view crop to structural grids</li>
+                        <li><strong>Grid To Crop</strong> — Align grids and levels to the view crop with a specified offset</li>
                         <li><strong>Section Box Around Selection</strong> — Create section boxes that precisely frame selected elements</li>
                     </ul>
                 </div>
@@ -393,7 +334,7 @@
                 </div>
                 <div class="spec-row">
                     <span class="spec-label">Architecture</span>
-                    <span class="spec-value">C# / .NET / WPF</span>
+                    <span class="spec-value">C# / .NET / WPF / Revit API</span>
                 </div>
                 <div class="spec-row">
                     <span class="spec-label">Installation</span>
@@ -403,13 +344,13 @@
         </div>
     </section>
 
-    <!-- Why NS Toolkit -->
+    <!-- Why NS.Toolkit -->
     <section class="section" style="padding-top: 0;">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 20px;">Built by Architects, for Architects</h2>
             <p style="text-align: center; max-width: 80ch; margin: 0 auto 50px;">
                 Created by a practicing architect who understands real workflow pain points.
-                NS Toolkit saves hours of manual cleanup and renumbering work.
+                NS.Toolkit brings recurring BIM tasks into a single Revit ribbon tab.
             </p>
 
             <div class="grid grid-auto">
@@ -419,11 +360,11 @@
                 </div>
                 <div class="card reveal" style="padding: 40px; text-align: center;">
                     <h3>Lightweight</h3>
-                    <p>Integrates directly into your existing ribbon without overhead</p>
+                    <p>Access the tools directly from the Revit ribbon</p>
                 </div>
                 <div class="card reveal" style="padding: 40px; text-align: center;">
                     <h3>Time Saving</h3>
-                    <p>Saves hours of manual cleanup and renumbering work every week</p>
+                    <p>Automate repetitive tasks such as sheet creation and renumbering</p>
                 </div>
             </div>
         </div>
@@ -465,16 +406,13 @@
 <footer class="footer-class" style="display: flex; flex-direction: column; min-height: 100vh;">
     <div class="container" style="display: flex; flex-direction: column; flex-grow: 1;">
         <div class="flex-center" style="margin-top: auto; margin-bottom: 40px;">
-            <h2>Get Early Access</h2>
-            <p style="margin-bottom: 32px;">Be the first to try NS Toolkit when it launches.</p>
-            <div class="signup-form">
-                <form action="https://mail.nikitaskrebnyov.com/subscribe" method="POST">
-                    <input type="email" name="email" placeholder="your@email.com" required />
-                    <input type="hidden" name="source" value="Website" />
-                    <button type="submit" class="btn">Notify Me</button>
-                </form>
-                <p class="signup-note">No spam — just one email when we're ready.</p>
-            </div>
+            <h2>Download NS.Toolkit</h2>
+            <p style="margin-bottom: 24px;">The first public release is available for free.</p>
+            <a href="https://nikitaskrebnyov.gumroad.com/l/acozxy" class="btn">Download on Gumroad</a>
+            <p style="margin: 24px auto 0; max-width: 65ch; text-align: center;">
+                For bug reports, feature suggestions, or custom Revit and BIM automation work:<br>
+                <a href="mailto:nikitaskrebnyov@icloud.com" style="display: inline-block; text-decoration: underline;">Get in touch</a>
+            </p>
         </div>
 
         <div class="flex-center" style="margin-top: auto; padding-top: 30px; width: 100%;">
